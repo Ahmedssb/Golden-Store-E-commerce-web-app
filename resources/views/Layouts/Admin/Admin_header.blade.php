@@ -93,7 +93,7 @@
 
                 <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
 
-                <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
+                <a class="nav-link" href="{{route('Settings')}}"><i class="fa fa-cog"></i> Settings</a>
 
                 <a class="nav-link" href="{{route('logoutt')}}"><i class="fa fa-power-off"></i> Logout</a>
             </div>

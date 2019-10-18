@@ -29,6 +29,11 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <script src="/Admin/vendors/jquery/dist/jquery.min.js"></script>
 
+   
+
+    <!-- data table jquery-->
+     <script src="/Admin/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+
 </head>
 
 <body>
@@ -68,42 +73,23 @@
             </div>
         </div>
 
+
         <div class="content mt-3">
 
              
-        <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-flat-color-2">
-                    <div class="card-body pb-0">
-                        <div class="dropdown float-right">
-                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton2" data-toggle="dropdown">
-                                <i class="fa fa-cog"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                <div class="dropdown-menu-content">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="mb-0">
-                            <span class="count">10468</span>
-                        </h4>
-                        <p class="text-light">Members online</p>
-
-                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
-                            <canvas id="widgetChart2"></canvas>
-                        </div>
-
-                    </div>
-                </div>
+         
+                
                 @yield('content')
 
-            </div>
+           
             <!--/.col-->
 
 
         </div> <!-- .content -->
+
+
+
+
     </div><!-- /#right-panel -->
 
     <!-- Right Panel -->
@@ -119,6 +105,31 @@
     <script src="/Admin/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
     <script src="/Admin/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <script src="/Admin/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    
+   
+     
+
+  <!-- data table js -->
+     <script src="/Admin/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/Admin/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/Admin/assets/js/main.js"></script>
+
+
+    <script src="/Admin/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/Admin/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/Admin/vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="/Admin/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="/Admin/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/Admin/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="/Admin/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/Admin/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="/Admin/vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="/Admin/assets/js/init-scripts/data-table/datatables-init.js"></script>
+  
+    <!-- validation js -->
+   
+
+
     <script>
         (function($) {
             "use strict";
@@ -136,6 +147,22 @@
                 normalizeFunction: 'polynomial'
             });
         })(jQuery);
+    </script>
+
+    <script>
+    
+    $(document).ready(function(){
+        alert("test"); 
+    $("#delete_cat").click(functin(){
+                      
+         if(confirm("Are  you sure you want to delete this category?")){
+           return true;
+               }                  
+           return false;                
+                           
+              });
+    
+          });
     </script>
 
 </body>

@@ -43,4 +43,8 @@ class Main_cont extends Controller
         return view('Admin.Dashboard.Index_view');   
 
     }
+
+    public function settings(){
+        return view('Admin.Dashboard.Settings_view');
+    }
 }
