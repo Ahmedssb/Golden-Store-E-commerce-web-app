@@ -1,0 +1,56 @@
+ .popbtn{
+ 	border: 2px solid white;
+	border-radius: 30px;
+	text-decoration: none;
+	color: white;
+ 
+	&:hover {
+		background-color: white;
+		color: $blue;
+		border: 2px solid $blue;
+	}
+}
+
+
+.bg-modal {
+	background-color: rgba(0, 0, 0.5, 0.3);
+	width: 100%;
+	height: 80%;
+	position: relative;
+	top: 0;
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-contents {
+	height: 1000px;
+	width: 500px;
+	background-color: white;
+	text-align: center;
+	padding: 20px;
+	position: relative;
+	border-radius: 4px;
+}
+
+.product-detail{
+	margin: 15px auto;
+	display: block;
+	width: 50%;
+	padding: 8px;
+	border: 1px solid gray;
+	 border-radius: 25px;
+}
+
+.close-btn {
+	position: absolute;
+	top: 0;
+	right: 10px;
+	font-size: 30px;
+	color: #333;
+	transform: rotate(45deg);
+	cursor: pointer;
+	&:hover {
+		color: #666;
+	}
+}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+
 class Category_cont extends Controller
 {
     public function add(Request $request){

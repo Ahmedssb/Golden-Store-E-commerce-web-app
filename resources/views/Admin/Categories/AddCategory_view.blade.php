@@ -2,7 +2,7 @@
 
 
 @section('content')
-<div class="col-lg-6">
+<div class="col-lg-8">
       <div class="card">
                                                         <div class="card-header">Add Category</div>
                                                         <div class="card-body card-block">
@@ -42,6 +42,8 @@
                                                                         <input type="text" id="url" name="url" class="form-control">
                                                                      </div>
                                                                 </div>
+
+                                                                
                                                                 <div class="form-actions form-group">
                                                                     <input  type="submit" value="Add" class="btn btn-success "> 
                                                                 </div>

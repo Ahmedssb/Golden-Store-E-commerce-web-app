@@ -23,11 +23,18 @@
     <link rel="stylesheet" href="/Admin/vendors/selectFX/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="/Admin/vendors/jqvmap/dist/jqvmap.min.css">
 
+    <link rel="stylesheet" href="/Admin/assets/css/popUp.css">
 
     <link rel="stylesheet" href="/Admin/assets/css/style.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <script src="/Admin/vendors/jquery/dist/jquery.min.js"></script>
+ <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- SweetAlert2 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 
    
 
@@ -51,9 +58,19 @@
     <div class="alert alert-success" role="alert" style="margin-top:10px;">
                             <button type="button" class="close" data-dismiss="alert">x</button>
                             <h4> <i class="fa fa-check"></i>Success!</h4>
+                       
                                 {{Session::get('msg')}}
     </div>
     @endif
+
+    @if(Session::has('msg_err'))
+    <div class="alert alert-danger" role="alert" style="margin-top:10px;">
+                            <button type="button" class="close" data-dismiss="alert">x</button>
+                            <h4> <i class="fa fa-ban"></i>Failed!</h4>
+                                {{Session::get('msg_err')}}
+    </div>
+    @endif
+
         <div class="breadcrumbs">
             <div class="col-sm-4">
                 <div class="page-header float-left">
@@ -164,6 +181,86 @@
     
           });
     </script>
+
+<script>
+    
+    function showPop(btnId,divId,closeId){
+        var id1 = btnId,
+            id2 = divId ,
+            id3 = closeId;
+        
+       document.getElementById(id1).onclick = function (id){
+        	document.getElementById(id2).style.display = "flex";
+           
+    }
+    
+document.getElementById(id3).onclick = function(){
+    console.log(id3);
+        document.getElementById(id2).style.display = "none";
+}
+}
+    
+</script>
+
+<!--add dynamic input fields -->
+<script>
+  
+        var div1= document.getElementById('attributes'),
+            
+            btn1 = document.getElementById('btn_attributes');
+
+        /*btn1.onclick = function (){
+             div1.innerHTML += " <div> <input type='text' id='sku[]' placeholder='sku' style='width:24%;text-align:center' > <input type='text' id='size[]' placeholder='size' style='width:24%;text-align:center' > <input type='text' id='price[]' placeholder='price' style='width:24%;text-align:center' > <input type='text' id='stock[]' placeholder='stock' style='width:24%;text-align:center' > </div>";
+                    
+        }*/
+        
+        btn1.onclick = function (){
+
+        input1 = document.createElement('input'),
+            input2 = document.createElement('input'),
+            input3 = document.createElement('input') ,
+            input4 = document.createElement('input');
+             
+     
+     input1.setAttribute('type','text');
+     input1.setAttribute('name','sku[]');
+     input1.setAttribute('placeholder','sku');
+     input1.setAttribute("style", "width:24%;text-align:center");
+     input1.setAttribute("required", "");
+
+     
+
+     input2.setAttribute('type','text');
+     input2.setAttribute('name','size[]');
+     input2.setAttribute('placeholder','size');
+     input2.setAttribute("style", "width:24%;text-align:center");
+     input2.setAttribute("required", "");
+
+     input3.setAttribute('type','text');
+     input3.setAttribute('name','price[]');
+     input3.setAttribute('placeholder','price');
+     input3.setAttribute("style", "width:24%;text-align:center");
+     input3.setAttribute("required", "");
+
+     input4.setAttribute('type','text');
+     input4.setAttribute('name','stock[]');
+     input4.setAttribute('placeholder','stock');
+     input4.setAttribute("style", "width:24%;text-align:center");
+     input4.setAttribute("required", "");
+    
+     
+    
+    
+      div1.appendChild(input1);
+      div1.appendChild(input2);
+      div1.appendChild(input3);
+      div1.appendChild(input4);
+      }
+
+</script>
+
+
+
 
 </body>
 

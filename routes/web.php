@@ -24,7 +24,8 @@ Route::prefix('Admin')->middleware('auth')->group(function(){
     Route::get('/AdminDash','Admin\Main\Main_cont@index')->name('AdminDashboard');
     Route::get('/logout','Admin\Main\Main_cont@logout')->name('logoutt');
     Route::get('/Settings','Admin\Main\Main_cont@settings')->name('Settings');
-
+     
+    //category route 
     Route::prefix('Category')->group(function(){
 
         Route::get('Index','Category_cont@index')->name('Category.Index');
@@ -34,9 +35,27 @@ Route::prefix('Admin')->middleware('auth')->group(function(){
         Route::post('Update/{id}','Category_cont@update')->name('Category.Update');
         Route::get('Delete/{id}','Category_cont@delete')->name('Category.Delete');
         Route::post('Delete/{id}','Category_cont@delete')->name('Category.Delete');
+     });
 
+       //product route 
+    Route::prefix('Product')->group(function(){
 
- });
+        Route::get('Index','Admin\Product_cont@index')->name('Product.Index');
+        Route::get('Add','Admin\Product_cont@add')->name('Product.Add');
+        Route::post('Add','Admin\Product_cont@add')->name('Product.Add');
+        Route::get('Update/{id}','Admin\Product_cont@update')->name('Product.Update');
+        Route::post('Update/{id}','Admin\Product_cont@update')->name('Product.Update');
+        Route::get('Delete/{id}','Admin\Product_cont@delete')->name('Product.Delete');
+         
+         // start of product attributes route 
+        Route::prefix('Attribute')->group(function(){
+            Route::get('Add/{id}','Admin\Product_cont@addAttributes')->name('ProductAttributes.Add');
+            Route::post('Add/{id}','Admin\Product_cont@addAttributes')->name('ProductAttributes.Add');
+            Route::get('Delete/{id}','Admin\Product_cont@deleteAttributes')->name('ProductAttributes.Delete');
+
+          }); // end of product attributes route 
+         
+     }); // end of product route 
 
 }); //end of admin route 
  
@@ -45,3 +64,6 @@ Route::get('/logout','Admin\Main\Main_cont@logout')->name('logoutt');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/','User\Main_cont@index')->name('UserIndex');

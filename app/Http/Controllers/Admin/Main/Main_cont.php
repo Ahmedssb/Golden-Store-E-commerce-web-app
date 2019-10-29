@@ -47,4 +47,7 @@ class Main_cont extends Controller
     public function settings(){
         return view('Admin.Dashboard.Settings_view');
     }
+
+  
+
 }

@@ -22,6 +22,7 @@ class RedirectIfAuthenticated
         }else{
             return redirect()->action('Admin\Main\Main_cont@login')->with('error_message','you must login to access');
         }
+        
 
         return $next($request);
     }
