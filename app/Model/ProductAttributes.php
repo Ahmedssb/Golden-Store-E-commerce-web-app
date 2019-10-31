@@ -16,4 +16,10 @@ class ProductAttributes extends Model
         'price',
         'stock',
     ];
+
+    public function product(){
+       
+            return $this->belongsTo('App\Model\Product','product_id');
+    
+    }
 }

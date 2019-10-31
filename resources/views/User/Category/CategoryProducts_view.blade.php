@@ -24,7 +24,7 @@
 								@if($sub->parent_id == $cat->id)
 									<div class="panel-body">
 										<ul>
-											<li><a href="{{route('Categort.Products',['id'=>$sub->id])}}">{{$sub->name}}</a></li>
+										<li><a href="{{route('Categort.Products',['id'=>$sub->id])}}">{{$sub->name}}</a></li>
 											 
 										</ul>
 									</div>
@@ -70,7 +70,7 @@
 				
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">Features Items</h2>
+						<h2 class="title text-center">{{$cat_name}}</h2>
 						@foreach($products as $product)
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">

@@ -6,6 +6,49 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Home | E-Shopper</title>
+     
+     <style>
+  /* Style the buttons that are used to open and close the accordion panel */
+.accordion10 {
+  background-color: #FFF;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active10, .accordion10:hover {
+  background-color: #FFF ;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel10 {
+ padding: 0 18px;
+  background-color:#FFF;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+    
+.accordion10:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+.active10:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+</style> 
+  
+    
     <link href="/User/css/bootstrap.min.css" rel="stylesheet">
     <link href="/User/css/font-awesome.min.css" rel="stylesheet">
     <link href="/User/css/prettyPhoto.css" rel="stylesheet">

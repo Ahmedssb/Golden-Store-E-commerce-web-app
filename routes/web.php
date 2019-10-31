@@ -66,4 +66,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/','User\Main_cont@index')->name('UserIndex');
+Route::get('/UserIndex','User\Main_cont@index')->name('UserIndex');
+
+// user routes
+
+Route::get('SpecificCategory/{id}','User\Product_cont@showCategoryProducts')->name('Categort.Products');
