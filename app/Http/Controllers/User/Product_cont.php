@@ -11,14 +11,13 @@ class Product_cont extends Controller
 {
     public function showCategoryProducts($id){
          // show 404 page if category not exist 
-         $cat_result =Category::where(['id'=>$id])->exists();
+         $cat_result =Category::where(['id'=>$id,'status'=>1])->exists();
          if(!$cat_result){
             return view('User.404');
          }
 
-
-       $category = Category::find($id);
-          
+       $category = Category::where(['id'=>$id],['status'=>1])->first();  
+       
        // get the name of the category and send it to view to display it as title
        $cat_name = $category->name;
        /*if category is main category then retrive all products for the main category 
@@ -45,7 +44,7 @@ class Product_cont extends Controller
       
        /* get all categories and sub to dispaly on the left panel 
      this code could be moved as leftside panel  layout view and extend it for mny views*/
-       $categories = Category::where(['parent_id'=>0])->get();
+       $categories = Category::where('parent_id',0)->where('status',1) ->get();
        $sub_cat = Category::where('parent_id', '!=', 0)->get();
        
        

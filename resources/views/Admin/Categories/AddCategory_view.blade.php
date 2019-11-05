@@ -42,6 +42,13 @@
                                                                         <input type="text" id="url" name="url" class="form-control">
                                                                      </div>
                                                                 </div>
+																
+																  <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">Status</div>
+                                                                        <input type="checkbox"   name="status" class="form-control"  value="1">
+                                                                     </div>
+                                                                </div>
 
                                                                 
                                                                 <div class="form-actions form-group">

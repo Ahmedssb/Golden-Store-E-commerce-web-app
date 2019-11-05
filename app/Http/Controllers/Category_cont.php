@@ -11,6 +11,14 @@ class Category_cont extends Controller
         if($request->isMethod('post')){
              $data=$request->all();
            $category = new Category; 
+           //dd($data['status']);
+           if(empty($data['status'])){
+           
+            $category->status = 0;
+           }else{
+            $category->status = 1;
+             
+           }
            $category->parent_id = $data['parent_id'];
            $category->name = $data['name'];
            $category->description = $data['description'];
@@ -42,6 +50,15 @@ class Category_cont extends Controller
         if($request->isMethod('post')){
             //$category->update($request->all());
              $data =$request->all();
+             
+             if(empty($data['status'])){
+           
+                $category->status = 0;
+               }else{
+                $category->status = 1;
+                 
+               }
+              
              $category->update(['name'=>$data['name'],'description'=>$data['description'],'url'=>$data['url']]);
             return redirect()->back()->with('msg','Category Updated Successfully');
         }else{

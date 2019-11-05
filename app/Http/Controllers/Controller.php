@@ -13,6 +13,6 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public static function mainCategories(){
-        return Category::where(['parent_id'=>0])->get();
+        return Category::where(['parent_id'=>0,'status'=>1])->get();
     }
 }
