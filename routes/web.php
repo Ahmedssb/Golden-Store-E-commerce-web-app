@@ -71,3 +71,8 @@ Route::get('/UserIndex','User\Main_cont@index')->name('UserIndex');
 // user routes
 
 Route::get('SpecificCategory/{id}','User\Product_cont@showCategoryProducts')->name('Categort.Products');
+
+Route::get('ProductDeatils/{id}','User\Product_cont@productDetails')->name('Categort.Product.Details');
+
+// get product price 
+Route::get('product-price','User\Product_cont@getPrice');

@@ -9,6 +9,7 @@
 /*scroll to top*/
 
 $(document).ready(function(){
+
 	$(function () {
 		$.scrollUp({
 	        scrollName: 'scrollUp', // Element ID
@@ -27,4 +28,27 @@ $(document).ready(function(){
 	        zIndex: 2147483647 // Z-Index for the overlay
 		});
 	});
+});
+
+
+$(document).ready(function(){
+	$('#selSize').change(function(){
+		var idSize = $(this).val();
+		 if(idSize == ""){
+			 return false;
+		 }
+		 $.ajax({
+			  type:'get',
+			  url:'/product-price',
+			  data:{idSize:idSize},
+			  success:function(resp){
+				 // alert(resp);
+				 $('#getPrice').html('US'+resp);
+			  },error:function(){
+				  alert('error');
+			  }
+		 });
+		 
+		});
+	
 });

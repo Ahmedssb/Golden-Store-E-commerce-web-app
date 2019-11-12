@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Model\Product;
-
+use  App\Model\ProductAttributes;
 class Product_cont extends Controller
 {
     public function showCategoryProducts($id){
@@ -54,4 +54,35 @@ class Product_cont extends Controller
        $arr['cat_name'] = $cat_name;
        return view('User.Category.CategoryProducts_view',$arr);
     }
+
+
+    public function productDetails($id){
+      $productDeatails = Product::find($id);
+      $productAttributes = $productDeatails->attributes;
+     
+      // get category and sub category to diplay them on the left panel 
+      $categories = Category::where('parent_id',0)->where('status',1) ->get();
+      $sub_cat = Category::where('parent_id', '!=', 0)->get();
+
+     
+      $arr['productDeatails']=   $productDeatails;
+      $arr['attributes'] = $productAttributes;
+      $arr['categories']= $categories;
+      $arr['sub_cat'] = $sub_cat;
+
+      return view('User.Product.Productdeatils_view',$arr);
+
+    }
+
+  public function getPrice(Request $request){
+     $data = $request->all();
+      $productAtt = explode('-',$data['idSize']);
+    // echo $productAtt[0]; echo $productAtt[1]; die;
+     $productAtt = ProductAttributes::where(['id'=> $productAtt[0] ,'size'=> $productAtt[1]])->first();
+
+    echo $productAtt->price;
+
+
+  }
+
 }

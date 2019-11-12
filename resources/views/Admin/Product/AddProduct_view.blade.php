@@ -59,10 +59,19 @@
 
                                                                 <div class="form-group">
                                                                     <div class="input-group">
+                                                                        <div class="input-group-addon">Material & Care</div>
+                                                                        <textarea type="text" id="product_care" name="product_care" class="form-control"> </textarea>
+                                                                     </div>
+                                                                </div>
+
+
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
                                                                         <div class="input-group-addon">Image</div>
                                                                         <input type="file" id="product_image" name="product_image" class="form-control">
                                                                      </div>
                                                                 </div>
+
 
                                                                 <div class="form-actions form-group">
                                                                     <input  type="submit" value="Add" class="btn btn-success "> 

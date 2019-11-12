@@ -61,14 +61,23 @@
                                                                      </div>
                                                                 </div>
 
+
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">Material & Care</div>
+                                                                        <div class="col col-md-9">  <textarea type="text" id="product_care" name="product_care" class="form-control"> {{$product->care}} </textarea></div>
+                                                                      
+                                                                     </div>
+                                                                </div>
+
+
                                                                 <div class="form-group">
                                                                     <div class="input-group">
                                                                         <div class="input-group-addon">Image</div>
                                                                       <div class="input-group-addon"  style="padding:0px 6px;border:2px solid #FFF;">  <input style="padding:0px;" type="file" id="product_image" name="product_image"  > </div>
                                                                         <input type="hidden" name="current_image" value="{{$product->image}}">
                                                                         <div class="input-group-addon" style="padding:0px;"> <img src="{{'/images/products/Small/'.$product->image}}" style="width:85px;height:80px;border:2px solid #FFF;"> </div>
-                                                                     </div>
-                                                                   
+                                                                     </div>  
                                                                 </div>
 
                                                                 <div class="form-actions form-group">

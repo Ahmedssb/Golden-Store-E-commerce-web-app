@@ -31,6 +31,12 @@ class product_cont extends Controller
             $product->description = ""; 
           }
 
+          if(!empty($data['product_care'])){
+            $product->care = $data['product_care'];
+          }else{
+            $product->care = ""; 
+          }
+
           // image upload 
           if($request->hasFile('product_image')){
             $temp_image = $request->file('product_image');
@@ -103,7 +109,7 @@ class product_cont extends Controller
      public function update(Request $request , $id){
 
       $product=Product::find($id);
-     if($request->isMethod('post')){
+       if($request->isMethod('post')){
          $data= $request->all();
       
 
@@ -152,14 +158,19 @@ class product_cont extends Controller
            $file_name=$data['current_image'];
         }
 
-         // only description can be empty other fields must be validated using js 
+         // only description and care can be empty other fields must be validated using js 
          $des = $data['product_des'];
+         $care = $data['product_care'];
+         
          if(empty( $des)){
           $des = " ";
          }
 
-         $product->update(['category_id'=>$data['category_id'],'name'=>$data['product_name'],'code'=>$data['product_code'],'color'=>$data['product_color']
-         ,'description'=>$des,'price'=>$data['product_price'],'image'=>$file_name ]);
+         if(empty( $care)){
+          $care = " ";
+         }
+          $product->update(['category_id'=>$data['category_id'],'name'=>$data['product_name'],'code'=>$data['product_code'],'color'=>$data['product_color']
+         ,'description'=>$des,'price'=>$data['product_price'],'image'=>$file_name ,'care'=>$care ]);
          
           return redirect()->back()->with('msg','Product Updated Successfully');
      }
@@ -175,9 +186,18 @@ class product_cont extends Controller
 
      public function delete($id){
        $product = Product::find($id);
+       
+       try{
+         // first delete product iamges from the folders 
+        unlink(public_path('/images/products/Small/'.$product->image));
+        unlink(public_path('/images/products/Medium/'.$product->image));
+        unlink(public_path('/images/products/Larage/'.$product->image));
+        // then delete the product from the database
+        $product->delete();
+        
+        }catch(\Exception $exception){
 
-       $product->delete();
-
+        }
        return redirect()->back()->with('msg','Product Deleted Successfully');
 
      }
@@ -195,6 +215,22 @@ class product_cont extends Controller
          $data =$request->all();
          foreach($data['sku'] as $key => $val){ 
              if(!empty($val)){
+                // check for SKU if it is already exists
+                $attSkuCount = ProductAttributes::where('sku',$val)->count();
+                // prevent duplicate SKU
+                if($attSkuCount>0){
+                  return redirect()->back()->with('msg_err','Sku cant be duplicated');
+
+                }
+
+                // check for size if it is already exists
+                $sizeCount = ProductAttributes::where(['product_id'=>$id,'size'=>$data['size'][$key]])->count();
+                // prevent duplicate size
+                if( $sizeCount>0){
+                  return redirect()->back()->with('msg_err','Size cant be duplicated');
+
+                }
+
                 $attribute = new ProductAttributes;
                 $attribute->sku=$val;
                 $attribute->size=$data['size'][$key];
