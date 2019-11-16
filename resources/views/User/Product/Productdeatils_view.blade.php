@@ -10,38 +10,24 @@
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
-								<img src="{{'/images/products/Small/'.$productDeatails->image}}" alt="" />
+								<img   class="mainImage"  src="{{'/images/products/Small/'.$productDeatails->image}}" alt="" />
 								<h3>ZOOM</h3>
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 								
 								  <!-- Wrapper for slides -->
 								    <div class="carousel-inner">
-										<div class="item active">
-										  <a href=""><img src="/User/User/images/product-details/similar1.jpg" alt=""></a>
-										  <a href=""><img src="/User/images/product-details/similar2.jpg" alt=""></a>
-										  <a href=""><img src="/User/images/product-details/similar3.jpg" alt=""></a>
+									@if(!empty($productImages))
+										
+										<div class="item active"  >
+										@foreach($productImages as $image)
+										  <img class="changeImage" style="width:80px;height:100px;border:1px solid #EF9C0C;border-radius:20px;cursor: pointer; "  src="{{'/images/products/Small/'.$image->image}}" alt=""> 
+										@endforeach
 										</div>
-										<div class="item">
-										  <a href=""><img src="/User/images/product-details/similar1.jpg" alt=""></a>
-										  <a href=""><img src="/User/images/product-details/similar2.jpg" alt=""></a>
-										  <a href=""><img src="/User/images/product-details/similar3.jpg" alt=""></a>
-										</div>
-										<div class="item">
-										  <a href=""><img src="/User/images/product-details/similar1.jpg" alt=""></a>
-										  <a href=""><img src="/User/images/product-details/similar2.jpg" alt=""></a>
-										  <a href=""><img src="/User/images/product-details/similar3.jpg" alt=""></a>
-										</div>
+									
+                                     @endif
 										
 									</div>
-
-								  <!-- Controls -->
-								  <a class="left item-control" href="#similar-product" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								  </a>
-								  <a class="right item-control" href="#similar-product" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								  </a>
 							</div>
 
 						</div>
@@ -210,6 +196,8 @@
 					</div><!--/recommended_items-->
 					
 				</div>
+
+	
 <script>
  var acc = document.getElementsByClassName("accordion10");
 var i;
@@ -229,5 +217,5 @@ for (i = 0; i < acc.length; i++) {
 
 
 </script>
- 
+
 @endsection

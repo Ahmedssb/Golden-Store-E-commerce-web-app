@@ -58,8 +58,11 @@ class Product_cont extends Controller
 
     public function productDetails($id){
       $productDeatails = Product::find($id);
+      // get all product attributes using the attributes relation
       $productAttributes = $productDeatails->attributes;
-     
+      // get all product images using images relation
+      $productImages  = $productDeatails->images;
+       
       // get category and sub category to diplay them on the left panel 
       $categories = Category::where('parent_id',0)->where('status',1) ->get();
       $sub_cat = Category::where('parent_id', '!=', 0)->get();
@@ -67,6 +70,7 @@ class Product_cont extends Controller
      
       $arr['productDeatails']=   $productDeatails;
       $arr['attributes'] = $productAttributes;
+      $arr['productImages'] = $productImages;
       $arr['categories']= $categories;
       $arr['sub_cat'] = $sub_cat;
 

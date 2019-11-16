@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Home | E-Shopper</title>
+    <script src="/User/js/jquery.js"></script>
      
      <style>
   /* Style the buttons that are used to open and close the accordion panel */
@@ -84,7 +85,7 @@
 	
 
   
-    <script src="/User/js/jquery.js"></script>
+  
 	<script src="/User/js/bootstrap.min.js"></script>
 	<script src="/User/js/jquery.scrollUp.min.js"></script>
 	<script src="/User/js/price-range.js"></script>

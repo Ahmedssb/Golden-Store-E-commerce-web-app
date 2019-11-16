@@ -8,6 +8,7 @@ use App\Category;
 use App\Model\Product;
 use Image;
 use App\Model\ProductAttributes;
+use App\model\productImages;
 use Illuminate\Support\Facades\Schema;
  
 class product_cont extends Controller
@@ -247,6 +248,74 @@ class product_cont extends Controller
       return view('Admin.Product.Attributes.AddAttributes_view',$arr);
      }
 
+
+
+     public function addProductImages(Request $request ,$id){
+      $product = Product::find($id);
+      $p = Product::all();
+      $att   = $product->attributes()->get();
+       $data = $request->all();
+       
+       if($request->isMethod('post')){
+         
+           // image upload 
+           if($request->hasFile('product_images')){
+             
+                $temp_images = $request->file('product_images');
+                
+                 foreach($temp_images as $temp_image){
+                       $images = new productImages;
+                      // Retrieving The Extension Of An Uploaded File 
+                      $extention = $temp_image->getClientOriginalExtension();
+                      $file_name = rand(111,99999).'.'.$extention;
+                      //define the pathes
+                      $large_image_path = public_path('/images/products/Larage/'.$file_name);
+                      $medium_image_path = public_path('images/products/Medium/'.$file_name);
+                      $small_image_path = public_path('images/products/Small/'.$file_name);
+                      
+                      //resize the image 
+                      Image::make($temp_image->getRealPath())->save($large_image_path);
+                  
+                      Image::make($temp_image->getRealPath())->resize(600,600)->save($medium_image_path);
+
+                      Image::make($temp_image->getRealPath())->resize(300,300)->save($small_image_path);
+                      //store images on the productsImages table
+                      $images->image =$file_name;
+                      $images->product_id = $id;
+                      $images->save();
+                 }
+          }
+        
+         return redirect()->back()->with('msg','Product Images Added Successfully');
+       }   // end if post mehtod
+
+      $productImages = productImages::where(['product_id'=>$id])->get();
+      
+      $arr['product']= $product;
+      $arr['attributes'] = $att;
+      $arr['productImages'] = $productImages;
+      return view('Admin.Product.AddProductImages_view',$arr);
+     }
+
+    public function deleteProductImage($id){
+      $productImage = productImages::find($id);
+      
+      try{
+        // delete image from the folder
+        unlink(public_path('/images/products/Small/'.$productImage->image));
+        unlink(public_path('/images/products/Medium/'.$productImage->image));
+        unlink(public_path('/images/products/Larage/'.$productImage->image));
+        //delete image from database
+        $productImage->delete();
+              
+      }catch(\Exception $exception){
+        dd($exception);
+      }
+
+      return redirect()->back()->with('msg','Product Image Deleted Successfully');
+
+
+    }
 
     public function deleteAttributes($id){
      

@@ -47,6 +47,11 @@ Route::prefix('Admin')->middleware('auth')->group(function(){
         Route::post('Update/{id}','Admin\Product_cont@update')->name('Product.Update');
         Route::get('Delete/{id}','Admin\Product_cont@delete')->name('Product.Delete');
          
+        Route::get('AddImages/{id}','Admin\Product_cont@addProductImages')->name('Product.AddImages');
+        Route::post('AddImages/{id}','Admin\Product_cont@addProductImages')->name('Product.AddImages');
+        Route::get('DeleteImages/{id}','Admin\Product_cont@deleteProductImage')->name('Product.deleteImages');
+
+
          // start of product attributes route 
         Route::prefix('Attribute')->group(function(){
             Route::get('Add/{id}','Admin\Product_cont@addAttributes')->name('ProductAttributes.Add');

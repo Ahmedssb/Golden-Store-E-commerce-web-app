@@ -32,6 +32,7 @@ $(document).ready(function(){
 
 
 $(document).ready(function(){
+	 // change size depend on the size selected 
 	$('#selSize').change(function(){
 		var idSize = $(this).val();
 		 if(idSize == ""){
@@ -50,5 +51,21 @@ $(document).ready(function(){
 		 });
 		 
 		});
+		
+	
 	
 });
+
+$(document).ready(function(){
+	 
+	 // replace product image with alternate image 
+	$('.changeImage').click(function(){
+		 var image = $(this).attr('src');
+		 
+		  $('.mainImage').attr('src',image);
+		
+	});
+	
+	 
+});
+

@@ -42,8 +42,9 @@
                                             @endif
                                             </td>
                                             <td> 
-                                            <button id="{{$product->id}}" onclick="showPop('{{$product->id}}','{{$product->id*300}}','{{$product->id*700}}')"  class="popbtn"><a class="btn btn-success btn-sm" >View more</a></button>
-                                            <a class="btn btn-warning btn-sm" href="{{route('ProductAttributes.Add',['id'=>$product->id])}} ">Add Attributes</a>
+                                            <button class="btn btn-success btn-sm" id="{{$product->id}}" onclick="showPop('{{$product->id}}','{{$product->id*300}}','{{$product->id*700}}')"  class="popbtn"><a  >View more</a></button>
+                                            <a class="btn btn-success btn-sm" href="{{route('ProductAttributes.Add',['id'=>$product->id])}} ">Add Attributes</a>
+                                            <a class="btn btn-info btn-sm " href="{{route('Product.AddImages',['id'=>$product->id])}} ">Add Images</a>
                                             <a class="btn btn-warning btn-sm" href="{{route('Product.Update',['id'=>$product->id])}} ">Edit</a>
                                             <a class="btn btn-danger btn-sm" href="{{route('Product.Delete',['id'=>$product->id])}} " id="delete_cat">Delete</a>
                                            
