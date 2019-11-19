@@ -317,6 +317,22 @@ class product_cont extends Controller
 
     }
 
+    public function  updateAttributes(Request $request){
+    
+      if($request->isMethod('post')){
+       
+        $data = $request->all();
+    
+        //get the attribute 
+        $att = ProductAttributes::find($data['attId']);
+        
+        $att->update(['price'=>$data['attPrice'],'stock'=>$data['attStock']]);
+
+      }
+      return redirect()->back()->with('msg','Product Attribute Updated Successfully');
+       
+    }
+
     public function deleteAttributes($id){
      
       

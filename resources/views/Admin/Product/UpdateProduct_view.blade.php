@@ -6,7 +6,7 @@
       <div class="card">
                                                         <div class="card-header">Update Product</div>
                                                         <div class="card-body card-block">
-                                                            <form action="" method="post"   enctype="multipart/form-data" class="" name="add_product" id="add_product"    >
+                                                            <form action="" method="post"   enctype="multipart/form-data" class="" name="update_product" id="update_product"    >
                                                               {{csrf_field()}}
                                                                
                                                               <div class="form-group">

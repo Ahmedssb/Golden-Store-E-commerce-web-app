@@ -10,18 +10,24 @@
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
-								<img   class="mainImage"  src="{{'/images/products/Small/'.$productDeatails->image}}" alt="" />
+							    <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
+								<a href="{{'/images/products/Larage/'.$productDeatails->image}}">
+								   <img  style="  width: 300px;" class="mainImage"  src="{{'/images/products/Small/'.$productDeatails->image}}" alt="" />
+								</a>
 								<h3>ZOOM</h3>
+								</div>
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 								
 								  <!-- Wrapper for slides -->
-								    <div class="carousel-inner">
+								    <div class="carousel-inner  thumbnails">
 									@if(!empty($productImages))
 										
-										<div class="item active"  >
+										<div class="item active "  >
 										@foreach($productImages as $image)
+										<a href="{{'/images/products/Larage/'.$image->image}}" data-standard="{{'/images/products/Medium/'.$image->image}}">
 										  <img class="changeImage" style="width:80px;height:100px;border:1px solid #EF9C0C;border-radius:20px;cursor: pointer; "  src="{{'/images/products/Small/'.$image->image}}" alt=""> 
+										</a>
 										@endforeach
 										</div>
 									
@@ -49,12 +55,14 @@
 									<span  id="getPrice">US {{$productDeatails->price}}$</span>
 									<label>Quantity:</label>
 									<input type="text" value="3" />
-									<button type="button" class="btn btn-fefault cart">
+									@if($total_stock>0)
+									<button type="button" class="btn btn-fefault cart" id="cart_btn">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
 									</button>
+									@endif
 								</span>
-								<p><b>Availability:</b> In Stock</p>
+								<p><b>Availability:</b> <span id="availability">@if($total_stock>0) In Stock @else Out Of Stock @endif</span></p>
 								<p><b>Condition:</b> New</p>
 								<a href=""><img src="/User/images/product-details/share.png" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->

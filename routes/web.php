@@ -57,6 +57,8 @@ Route::prefix('Admin')->middleware('auth')->group(function(){
             Route::get('Add/{id}','Admin\Product_cont@addAttributes')->name('ProductAttributes.Add');
             Route::post('Add/{id}','Admin\Product_cont@addAttributes')->name('ProductAttributes.Add');
             Route::get('Delete/{id}','Admin\Product_cont@deleteAttributes')->name('ProductAttributes.Delete');
+            Route::post('Update','Admin\Product_cont@updateAttributes')->name('ProductAttributes.Update');
+
 
           }); // end of product attributes route 
          

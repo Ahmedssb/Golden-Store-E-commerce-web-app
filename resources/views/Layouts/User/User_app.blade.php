@@ -57,6 +57,9 @@
     <link href="/User/css/animate.css" rel="stylesheet">
 	<link href="/User/css/main.css" rel="stylesheet">
 	<link href="/User/css/responsive.css" rel="stylesheet">
+  <link rel="stylesheet" href="/User/css/easyzoom.css" />
+  
+
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -66,6 +69,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/User/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/User/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/User/images/ico/apple-touch-icon-57-precomposed.png">
+
 </head><!--/head-->
 
 <body>
@@ -89,7 +93,8 @@
 	<script src="/User/js/bootstrap.min.js"></script>
 	<script src="/User/js/jquery.scrollUp.min.js"></script>
 	<script src="/User/js/price-range.js"></script>
-    <script src="/User/js/jquery.prettyPhoto.js"></script>
-    <script src="/User/js/main.js"></script>
+  <script src="/User/js/jquery.prettyPhoto.js"></script>
+  <script src="/User/js/easyzoom.js"></script>
+  <script src="/User/js/main.js"></script>
 </body>
 </html>

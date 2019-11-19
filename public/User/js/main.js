@@ -30,9 +30,9 @@ $(document).ready(function(){
 	});
 });
 
-
+/*
 $(document).ready(function(){
-	 // change size depend on the size selected 
+	 // change price and stock based on the size selected 
 	$('#selSize').change(function(){
 		var idSize = $(this).val();
 		 if(idSize == ""){
@@ -43,8 +43,39 @@ $(document).ready(function(){
 			  url:'/product-price',
 			  data:{idSize:idSize},
 			  success:function(resp){
-				 // alert(resp);
+				  alert(resp); return false;
 				 $('#getPrice').html('US'+resp);
+			  },error:function(){
+				  alert('error');
+			  }
+		 });
+		 
+		});
+		
+	
+	
+});*/
+$(document).ready(function(){
+	 // change price and stock based on the size selected 
+	$('#selSize').change(function(){
+		var idSize = $(this).val();
+		 if(idSize == ""){
+			 return false;
+		 }
+		 $.ajax({
+			  type:'get',
+			  url:'/product-price',
+			  data:{idSize:idSize},
+			  success:function(resp){
+				  var arr = resp.split("#");
+				 $('#getPrice').html('US'+arr[0]);
+				  if(arr[1]== 0){
+					  $("#cart_btn").hide();
+					  $("#availability").text("Out of Stock");
+				  }else{
+					  $("#cart_btn").show();
+					  $("#availability").text("In Stock");
+				  }
 			  },error:function(){
 				  alert('error');
 			  }
@@ -68,4 +99,36 @@ $(document).ready(function(){
 	
 	 
 });
+
+
+ // code for easy zooom
+
+// Instantiate EasyZoom instances
+		var $easyzoom = $('.easyzoom').easyZoom();
+
+		// Setup thumbnails example
+		var api1 = $easyzoom.filter('.easyzoom--with-thumbnails').data('easyZoom');
+
+		$('.thumbnails').on('click', 'a', function(e) {
+			var $this = $(this);
+ 			e.preventDefault();
+
+			// Use EasyZoom's `swap` method
+			api1.swap($this.data('standard'), $this.attr('href'));
+		});
+
+		// Setup toggles example
+		var api2 = $easyzoom.filter('.easyzoom--with-toggle').data('easyZoom');
+
+		$('.toggle').on('click', function() {
+			var $this = $(this);
+
+			if ($this.data("active") === true) {
+				$this.text("Switch on").data("active", false);
+				api2.teardown();
+			} else {
+				$this.text("Switch off").data("active", true);
+				api2._init();
+			}
+		});
 

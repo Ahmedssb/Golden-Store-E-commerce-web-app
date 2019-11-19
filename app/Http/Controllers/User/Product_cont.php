@@ -66,25 +66,35 @@ class Product_cont extends Controller
       // get category and sub category to diplay them on the left panel 
       $categories = Category::where('parent_id',0)->where('status',1) ->get();
       $sub_cat = Category::where('parent_id', '!=', 0)->get();
-
+      
+      // get the total stock for the product
+      $total_stock = $productAttributes->where('product_id',$id)->sum('stock');
+      //dd($total_stock);
      
       $arr['productDeatails']=   $productDeatails;
       $arr['attributes'] = $productAttributes;
       $arr['productImages'] = $productImages;
       $arr['categories']= $categories;
       $arr['sub_cat'] = $sub_cat;
-
+      $arr['total_stock'] = $total_stock;
       return view('User.Product.Productdeatils_view',$arr);
 
     }
 
+    /* get price of product based on the size  
+     use this fun in main js for ajax request to 
+     update the price part of the product detail page 
+     based on the size selected from the drop down list*/
   public function getPrice(Request $request){
      $data = $request->all();
       $productAtt = explode('-',$data['idSize']);
     // echo $productAtt[0]; echo $productAtt[1]; die;
+    // get the product attribute 
      $productAtt = ProductAttributes::where(['id'=> $productAtt[0] ,'size'=> $productAtt[1]])->first();
 
-    echo $productAtt->price;
+      echo $productAtt->price;
+      echo "#";
+      echo $productAtt->stock;
 
 
   }
