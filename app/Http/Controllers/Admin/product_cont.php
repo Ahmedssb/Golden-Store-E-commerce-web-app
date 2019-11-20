@@ -20,12 +20,23 @@ class product_cont extends Controller
           if(empty($data['category_id'])){
             return redirect()->back()->with('msg_err','under category is required !!');
           }
-
+          
           $product = new Product;
           $product->category_id = $data['category_id'];
           $product->name = $data['product_name'];
           $product->color = $data['product_color'];
           $product->code = $data['product_code'];
+          
+          //handle the status value
+          if(empty($data['status'])){
+           
+            $product->status = 0;
+           }else{
+            $product->status = 1;
+             
+           }
+
+          $product->status = $data['status'];
           if(!empty($data['product_des'])){
             $product->description = $data['product_des'];
           }else{
@@ -159,10 +170,20 @@ class product_cont extends Controller
            $file_name=$data['current_image'];
         }
 
+
+
+        //handle the status value
+        if(empty($data['status'])){
+           
+          $product->status = 0;
+         }else{
+          $product->status = 1;
+           
+         }
+         
          // only description and care can be empty other fields must be validated using js 
          $des = $data['product_des'];
          $care = $data['product_care'];
-         
          if(empty( $des)){
           $des = " ";
          }

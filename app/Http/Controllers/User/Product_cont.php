@@ -57,12 +57,21 @@ class Product_cont extends Controller
 
 
     public function productDetails($id){
+      //show 404 page if product is disabled
+     if($productCount == 0){
+        return view('User.404');
+      } $productCount = Product::where(['id'=>$id,'status'=>1])->count();
+      
+      // get the product 
       $productDeatails = Product::find($id);
       // get all product attributes using the attributes relation
       $productAttributes = $productDeatails->attributes;
       // get all product images using images relation
       $productImages  = $productDeatails->images;
        
+      // get similar product 
+      $recomandedProduct = Product::where('id','!=',$id)->where('category_id',$productDeatails->category_id)->get();
+      
       // get category and sub category to diplay them on the left panel 
       $categories = Category::where('parent_id',0)->where('status',1) ->get();
       $sub_cat = Category::where('parent_id', '!=', 0)->get();
@@ -77,6 +86,7 @@ class Product_cont extends Controller
       $arr['categories']= $categories;
       $arr['sub_cat'] = $sub_cat;
       $arr['total_stock'] = $total_stock;
+      $arr['recomandedProduct'] = $recomandedProduct;
       return view('User.Product.Productdeatils_view',$arr);
 
     }

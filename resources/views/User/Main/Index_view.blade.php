@@ -8,7 +8,11 @@
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">Features Items</h2>
-						@foreach($products as $product)
+							<!-- loop throuh the multidemisonal array products  come from index fun in Main_cont-->
+						@foreach($products as $productArray)
+						 @foreach($productArray as $product)
+						 <!-- display only products that has status 1 -->
+						 @if($product->status == 1)
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
@@ -34,6 +38,8 @@
 								</div>
 							</div>
 						</div>
+						@endif
+						@endforeach
 						@endforeach
 						
 					</div><!--features_items-->

@@ -20,10 +20,10 @@ class Main_cont extends Controller
         foreach ( $products_cats as  $cat) {
                 // avoid categories without products
              if( $cat->products->first()!= null){
-              $Products[] = $cat->products->first();
+              $Products[] = $cat->products;
              }
          }
-      
+      //  dd($Products);
        // get category and sub category to diplay them on the left panel 
        $categories = Category::where('parent_id',0)->where('status',1) ->get();
        $sub_cat = Category::where('parent_id', '!=', 0)->get();

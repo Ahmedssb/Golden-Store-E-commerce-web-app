@@ -80,6 +80,16 @@
                                                                      </div>  
                                                                 </div>
 
+
+
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">Status</div>
+                                                                        <input type="checkbox"   name="status" class="form-control"  value="1"  @if ($product->status==1) checked  @endif>
+                                                                     </div>
+                                                                </div>
+                                                                
+
                                                                 <div class="form-actions form-group">
                                                                     <input  type="submit" value="Update" class="btn btn-success "> 
                                                                 </div>

@@ -10,6 +10,8 @@
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">{{$cat_name}}</h2>
 						@foreach($products as $product)
+						<!-- display only products that has status value 1 -->
+						@if($product->status == 1)
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
@@ -35,6 +37,7 @@
 								</div>
 							</div>
 						</div>
+						@endif
 						@endforeach
 						
 					</div><!--features_items-->
