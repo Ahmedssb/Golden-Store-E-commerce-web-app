@@ -59,6 +59,7 @@ $(document).ready(function(){
 	 // change price and stock based on the size selected 
 	$('#selSize').change(function(){
 		var idSize = $(this).val();
+	 
 		 if(idSize == ""){
 			 return false;
 		 }
@@ -67,14 +68,16 @@ $(document).ready(function(){
 			  url:'/product-price',
 			  data:{idSize:idSize},
 			  success:function(resp){
-				  var arr = resp.split("#");
+ 				  var arr = resp.split("#");
 				 $('#getPrice').html('US'+arr[0]);
+				 
 				  if(arr[1]== 0){
 					  $("#cart_btn").hide();
 					  $("#availability").text("Out of Stock");
 				  }else{
 					  $("#cart_btn").show();
 					  $("#availability").text("In Stock");
+					  $("#p-price").val(arr[0]);
 				  }
 			  },error:function(){
 				  alert('error');

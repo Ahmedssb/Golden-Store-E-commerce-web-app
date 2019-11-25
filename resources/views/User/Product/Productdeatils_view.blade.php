@@ -6,7 +6,13 @@
     @include('Layouts.User.User_sidebar_view');
 				
 				<div class="col-sm-9 padding-right">
-		
+				@if(Session::has('msg_err'))
+					<div class="alert alert-danger" role="alert" style="margin-top:10px;">
+						<button type="button" class="close" data-dismiss="alert">x</button>
+						<h4> <i class="fa fa-ban"></i>Failed!</h4>
+							{{Session::get('msg_err')}}
+				     </div>
+			     @endif
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
@@ -38,34 +44,47 @@
 
 						</div>
 						<div class="col-sm-7">
-							<div class="product-information"><!--/product-information-->
-								<img src="/User/images/product-details/new.jpg" class="newarrival" alt="" />
-								<h2>{{$productDeatails->name}}</h2>
-								<p>Web ID: {{$productDeatails->code}}</p>
-								<p>
-								   <select  id="selSize" name="size">   
-								      <option value="">select</option>
-									  @foreach($attributes as $att)
-									  <option value="{{$att->id}}-{{$att->size}}">{{$att->size}}</option>
-                                      @endforeach
-								   </select>
-								</p>
-								<img src="images/product-details/rating.png" alt="" />
-								<span>
-									<span  id="getPrice">US {{$productDeatails->price}}$</span>
-									<label>Quantity:</label>
-									<input type="text" value="3" />
-									@if($total_stock>0)
-									<button type="button" class="btn btn-fefault cart" id="cart_btn">
-										<i class="fa fa-shopping-cart"></i>
-										Add to cart
-									</button>
-									@endif
-								</span>
-								<p><b>Availability:</b> <span id="availability">@if($total_stock>0) In Stock @else Out Of Stock @endif</span></p>
-								<p><b>Condition:</b> New</p>
-								<a href=""><img src="/User/images/product-details/share.png" class="share img-responsive"  alt="" /></a>
-							</div><!--/product-information-->
+						    <form name="cart-form" id="add-to-cart-form"  action="{{route('Product.AddToCart')}}"  enctype="multipart/form-data"  method="post" > 
+								{{csrf_field()}}
+								<input type="hidden" name="product-id"  value="{{$productDeatails->id}}">
+								<input type="hidden" name="product-code"  value="{{$productDeatails->code}}">
+								<input type="hidden" name="product-color"  value="{{$productDeatails->color}}">
+								<input type="hidden" name="product-name"  value="{{$productDeatails->name}}">
+								<input type="hidden" name="product-price"  id="p-price" >
+								<input type="hidden" name="user_email"  value=" ">
+								<input type="hidden" name="session_id"  value=" ">
+
+
+
+									<div class="product-information"><!--/product-information-->
+										<img src="/User/images/product-details/new.jpg" class="newarrival" alt="" />
+										<h2>{{$productDeatails->name}}</h2>
+										<p>Web ID: {{$productDeatails->code}}</p>
+										<p>
+										   <select  id="selSize" name="size">   
+											  <option value="">select</option>
+											  @foreach($attributes as $att)
+											  <option value="{{$att->id}}-{{$att->size}}">{{$att->size}}</option>
+											  @endforeach
+										   </select>
+										</p>
+										<img src="images/product-details/rating.png" alt="" />
+										<span>
+											<span  id="getPrice">US {{$productDeatails->price}}$</span>
+											<label>Quantity:</label>
+											<input type="text"   name="quantity"value="3" />
+											@if($total_stock>0)
+											<button type="submit" class="btn btn-fefault cart" id="cart_btn">
+												<i class="fa fa-shopping-cart"></i>
+												Add to cart
+											</button>
+											@endif
+										</span>
+										<p><b>Availability:</b> <span id="availability">@if($total_stock>0) In Stock @else Out Of Stock @endif</span></p>
+										<p><b>Condition:</b> New</p>
+										<a href=""><img src="/User/images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+									</div><!--/product-information-->
+							</form>
 						</div>
 					</div><!--/product-details-->
 					

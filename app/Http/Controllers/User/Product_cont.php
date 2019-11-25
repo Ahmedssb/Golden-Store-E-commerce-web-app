@@ -58,9 +58,10 @@ class Product_cont extends Controller
 
     public function productDetails($id){
       //show 404 page if product is disabled
+      $productCount = Product::where(['id'=>$id,'status'=>1])->count();
      if($productCount == 0){
         return view('User.404');
-      } $productCount = Product::where(['id'=>$id,'status'=>1])->count();
+      } 
       
       // get the product 
       $productDeatails = Product::find($id);
@@ -100,13 +101,14 @@ class Product_cont extends Controller
       $productAtt = explode('-',$data['idSize']);
     // echo $productAtt[0]; echo $productAtt[1]; die;
     // get the product attribute 
+    
      $productAtt = ProductAttributes::where(['id'=> $productAtt[0] ,'size'=> $productAtt[1]])->first();
 
       echo $productAtt->price;
       echo "#";
       echo $productAtt->stock;
-
-
   }
+
+  
 
 }

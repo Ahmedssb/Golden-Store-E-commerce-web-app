@@ -83,3 +83,14 @@ Route::get('ProductDeatils/{id}','User\Product_cont@productDetails')->name('Cate
 
 // get product price 
 Route::get('product-price','User\Product_cont@getPrice');
+
+//cart 
+Route::get('product-cart','User\Cart_cont@addToCart')->name('Product.AddToCart');
+Route::post('product-cart','User\Cart_cont@addToCart')->name('Product.AddToCart');
+
+Route::get('cart-Index','User\Cart_cont@index')->name('Cart.Index');
+
+Route::get('cart-Delete/{id}','User\Cart_cont@deleteCartItem')->name('Cart.Delete');
+
+Route::get('cart-Update/{id}/{quantity}','User\Cart_cont@UpdateCartItem')->name('Cart.Update');
+
