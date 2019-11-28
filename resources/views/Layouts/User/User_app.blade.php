@@ -58,6 +58,8 @@
 	<link href="/User/css/main.css" rel="stylesheet">
 	<link href="/User/css/responsive.css" rel="stylesheet">
   <link rel="stylesheet" href="/User/css/easyzoom.css" />
+  <link rel="stylesheet" href="/User/css/passtrength.css" />
+
   
 
     <!--[if lt IE 9]>
@@ -96,5 +98,9 @@
   <script src="/User/js/jquery.prettyPhoto.js"></script>
   <script src="/User/js/easyzoom.js"></script>
   <script src="/User/js/main.js"></script>
+  <script src="/User/js/jquery.validate.js"></script>
+  <script src="/User/js/passtrength.js"></script>
+
+
 </body>
 </html>

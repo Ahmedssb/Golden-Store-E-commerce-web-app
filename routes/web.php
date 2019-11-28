@@ -93,4 +93,15 @@ Route::get('cart-Index','User\Cart_cont@index')->name('Cart.Index');
 Route::get('cart-Delete/{id}','User\Cart_cont@deleteCartItem')->name('Cart.Delete');
 
 Route::get('cart-Update/{id}/{quantity}','User\Cart_cont@UpdateCartItem')->name('Cart.Update');
+// user login form
+Route::post('User-Login','User\User_cont@login')->name('User.Login');
+Route::get('User-Login','User\User_cont@login')->name('User.Login');
+//user register form
+Route::post('User-Register','User\User_cont@register')->name('User.Register');
+Route::get('User-Register','User\User_cont@register')->name('User.Register');
+
+Route::get('Check-Email','User\User_cont@checkEmail')->name('User.Check-Email');
+
+Route::get('User-Logout','User\User_cont@logout')->name('User.Logout');
+
 

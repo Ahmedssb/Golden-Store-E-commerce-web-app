@@ -134,4 +134,99 @@ $(document).ready(function(){
 				api2._init();
 			}
 		});
+		
+ $(document).ready(function(){
+	   //validate registeration form
+     $('#registerForm').validate({
+		 rules:{
+			 name:{
+				 required:true,
+				 minlength:2
+			 },
+			  password:{
+				 required:true,
+				 minlength:6
+			 },
+			 email:{
+				 required:true,
+				email:true,
+				remote:'Check-Email'
+				 
+			 }
+		 },
+		 
+		 messages:{
+		 name:'please enter your name',
+		  password:{
+			 required:'enter a password',
+			 minlength:'password must be at least 6 char'
+		 },
+		 email:{
+			 required:'please enter your email',
+			 email:'please enter a valid email',
+			 remote: 'Email already exist'
+		 }
+	 }
+		 
+		 
+	 })
+	 
+	 //password strength
+	 $('#Password').passtrength({
+ 
+			tooltip:true,
+
+			textWeak:"Weak",
+
+			textMedium:"Medium",
+
+			textStrong:"Strong",
+
+			textVeryStrong:"Very Strong",
+			  minChars: 6,
+			 eyeImg :"../User/images/Register/eye.svg" // toggle icon
+
+
+			});
+
+	
+	 
+});
+
+
+
+ $(document).ready(function(){
+	   //validate login form
+     $('#loginForm').validate({
+		 rules:{
+			  password:{
+				 required:true,
+				 minlength:6
+			 },
+			 email:{
+				 required:true,
+				email:true,
+ 				 
+			 }
+		 },
+		 
+		 messages:{
+ 		  password:{
+			 required:'enter a password',
+			 minlength:'password must be at least 6 char'
+		 },
+		 email:{
+			 required:'please enter your email',
+			 email:'please enter a valid email',
+ 		 }
+	 }
+		 
+		 
+	 })
+	 
+	 
+	
+	 
+});
+
 

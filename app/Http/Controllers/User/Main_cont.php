@@ -9,6 +9,8 @@ use  App\Category;
 
 class Main_cont extends Controller
 {
+
+    
     public function index(){
          /*to dispaly only the products that their categories status is enabled(1)
           first get the enabled categories */
