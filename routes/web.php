@@ -84,15 +84,7 @@ Route::get('ProductDeatils/{id}','User\Product_cont@productDetails')->name('Cate
 // get product price 
 Route::get('product-price','User\Product_cont@getPrice');
 
-//cart 
-Route::get('product-cart','User\Cart_cont@addToCart')->name('Product.AddToCart');
-Route::post('product-cart','User\Cart_cont@addToCart')->name('Product.AddToCart');
 
-Route::get('cart-Index','User\Cart_cont@index')->name('Cart.Index');
-
-Route::get('cart-Delete/{id}','User\Cart_cont@deleteCartItem')->name('Cart.Delete');
-
-Route::get('cart-Update/{id}/{quantity}','User\Cart_cont@UpdateCartItem')->name('Cart.Update');
 // user login form
 Route::post('User-Login','User\User_cont@login')->name('User.Login');
 Route::get('User-Login','User\User_cont@login')->name('User.Login');
@@ -103,5 +95,27 @@ Route::get('User-Register','User\User_cont@register')->name('User.Register');
 Route::get('Check-Email','User\User_cont@checkEmail')->name('User.Check-Email');
 
 Route::get('User-Logout','User\User_cont@logout')->name('User.Logout');
+
+
+
+Route::prefix('User')->middleware('UserLogin')->group(function(){
+
+        // user account page 
+    Route::match(['get', 'post'],'User-Account','User\User_cont@account')->name('User.Account');
+
+    //cart route 
+    Route::prefix('Cart')->group(function(){
+        Route::get('product-cart','User\Cart_cont@addToCart')->name('Product.AddToCart');
+        Route::post('product-cart','User\Cart_cont@addToCart')->name('Product.AddToCart');
+
+        Route::get('cart-Index','User\Cart_cont@index')->name('Cart.Index');
+
+        Route::get('cart-Delete/{id}','User\Cart_cont@deleteCartItem')->name('Cart.Delete');
+
+        Route::get('cart-Update/{id}/{quantity}','User\Cart_cont@UpdateCartItem')->name('Cart.Update');
+
+      }); // end of cart route 
+ });
+
 
 

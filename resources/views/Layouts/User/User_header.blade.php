@@ -71,7 +71,7 @@
 								@if(empty(Auth::check()))
 									<li><a href="{{route('User.Login')}}"><i class="fa fa-lock"></i> Login</a></li>
 								@else
-								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+								<li><a href="{{route('User.Account')}}"><i class="fa fa-user"></i> Account</a></li>
 								<li><a href="{{route('User.Logout')}}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
 								@endif
 

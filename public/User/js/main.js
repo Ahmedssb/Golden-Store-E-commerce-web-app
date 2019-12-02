@@ -229,4 +229,74 @@ $(document).ready(function(){
 	 
 });
 
+ $(document).ready(function(){
+	   //validate account form
+     $('#accountForm').validate({
+		 rules:{
+			  name:{
+				 required:true,
+				 accept:""
+			 },
+			 address:{
+				 required:true, 				 
+			 },
+			 city:{
+				 required:true, 				 
+			 },
+			 state:{
+				 required:true,
+  				 
+			 },
+			 country:{
+				 required:true,
+  				 
+			 },
+			 pincode:{
+				 required:true,
+  				 
+			 },
+			 phone:{
+				 required:true, 				 
+			 }
+			 
+		 },
+		 
+		 messages:{
+ 		  name:{
+			 required:'enter a name',
+			 accept:'Name must contain letter only'
+ 		 },
+		 address:{
+			 required:'enter  address',
+			 
+ 		 },
+		 city:{
+			 required:'enter  city',
+			 
+ 		 },
+		 state:{
+			 required:'enter  state',
+			 
+ 		 },
+		 country:{
+			 required:'select country',
+			 
+ 		 },
+		 pincode:{
+			 required:'enter  pincode',
+			 
+ 		 },
+		 phone:{
+			 required:'enter  phone',
+			 
+ 		 }
+	 }
+		 
+		 
+	 })
+	 
+	 
+	
+	 
+});
 

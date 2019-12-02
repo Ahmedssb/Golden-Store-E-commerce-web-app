@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use  App\Category;
 use App\User;
+use App\Model\Country;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 class User_cont extends Controller
@@ -46,8 +47,7 @@ class User_cont extends Controller
 
             }
 
-        }
-         
+        }     
         return view ('User.Main.User_Login_Register_view');
        }
 
@@ -67,4 +67,33 @@ class User_cont extends Controller
         Auth::logout();
         return redirect()->route('UserIndex');
        }
+
+
+      public function account(Request $request){
+        // get the current user 
+        $user =Auth::user();
+        $countries = Country::all();
+        $arr['countries'] = $countries;
+        $arr['user'] = $user;
+        if($request->isMethod('post')){
+          $data =$request->all();
+         // $user_id = $user->id;
+         $user->name = $data['name'];
+         $user->city = $data['city'];
+         $user->state = $data['state'];
+         $user->country = $data['country'];
+         $user->pincode = $data['pincode'];
+         $user->phone = $data['phone'];
+         $user->address = $data['address'];
+
+          
+         //save the changes
+          $user->save();
+
+          return redirect()->back()->with('msg','account  has been updated successfully');
+
+          
+          }
+        return view('User.Main.User_Account_view',$arr);
+      }
 }
