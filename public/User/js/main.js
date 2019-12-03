@@ -194,6 +194,32 @@ $(document).ready(function(){
 });
 
 
+  // check current password is correct
+  $('#current_pwd').keyup(function(){
+	  var current_pwd = $(this).val();
+	  $.ajax({
+		    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+		  type:'post',
+		  url:'/User/check-password',
+		  data:{current_pwd:current_pwd },
+		  success:function(resp){
+			 if(resp=='false'){
+				$("#check_pwd").html("Current password is incorrect").css("color", "red");
+			 }else{
+				$("#check_pwd").html(" Current password is correct").css("color", "green");
+ 
+			 }
+		  },error:function(){
+			  alert('error');
+		  }		
+	   
+	  });
+	  
+  });
+
+
 
  $(document).ready(function(){
 	   //validate login form
@@ -218,6 +244,51 @@ $(document).ready(function(){
 		 email:{
 			 required:'please enter your email',
 			 email:'please enter a valid email',
+ 		 }
+	 }
+		 
+		 
+	 })
+	 
+	 
+	
+	 
+});
+
+
+ $(document).ready(function(){
+	   //validate password update form
+     $('#password_reset').validate({
+		 rules:{
+			  current_pwd:{
+				 required:true,
+			 },
+			 new_pwd:{
+				 required:true,
+				 minlength:6,
+ 				 
+			 }
+			 ,
+			 confirm_pwd:{
+				 required:true,
+				 minlength:6,
+				equalTo:"#new_pwd"
+ 				 
+			 }
+		 },
+		 
+		 messages:{
+ 		  current_pwd:{
+			 required:'please enter the current password',
+ 		 },
+		 new_pwd:{
+			 required:'please enter new passowrd',
+			 minlength:'password must be at least 6 char'
+ 		 },
+		 confirm_pwd:{
+			 required:'please enter new passowrd',
+			 minlength:'password must be at least 6 char',
+			 equalTo:'password doesnot match'
  		 }
 	 }
 		 
@@ -296,7 +367,8 @@ $(document).ready(function(){
 	 })
 	 
 	 
-	
 	 
 });
+
+
 

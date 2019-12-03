@@ -68,7 +68,6 @@ class User_cont extends Controller
         return redirect()->route('UserIndex');
        }
 
-
       public function account(Request $request){
         // get the current user 
         $user =Auth::user();
@@ -95,5 +94,49 @@ class User_cont extends Controller
           
           }
         return view('User.Main.User_Account_view',$arr);
+      }
+
+     /* this function used to check that the current pwd user entered is the same pwd stored on the datbas
+      the result of this function will be passed to ajax on main.js */
+      public function checkPassword(Request $request){
+        // get the current password user entered 
+        $pwd = $request->input('current_pwd');
+           // get the current user password 
+           $user_pwd =Auth::user()->password;
+        
+        if($request->isMethod('post')){
+            if(Hash::check($pwd, $user_pwd )){
+              echo 'true';
+            }else{
+              echo 'false';
+            }
+
+        }
+      }
+
+      public function updatePassword(Request $request){
+         $data = $request->all();
+          // get the current user password 
+          $user =Auth::user();
+          $old_pwd =$user->password;
+       
+          $new_pwd = $data['current_pwd'];
+        
+
+          if($request->isMethod('post')){
+            /*make sure that the current pwd user entered 
+            is the same pwd stored on the database in case jquery ajax fun checkPassword above dosent work  */
+            if(Hash::check($new_pwd ,$old_pwd)){  
+              $newp = Hash::make( $data['new_pwd']);
+              // update the user password
+              $user->update(['password'=>$newp]);
+              return redirect()->back()->with('msg','password has been updated successfully');
+
+            }else{
+              return redirect()->back()->with('msg_err','current password is incorrect');
+            }
+
+        }
+          
       }
 }

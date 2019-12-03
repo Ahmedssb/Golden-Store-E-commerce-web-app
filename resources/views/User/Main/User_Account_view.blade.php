@@ -53,10 +53,13 @@
 				<div class="col-sm-4">
 					<div class="signup-form"><!--reset password-->
 						<h2>reset password</h2>
-						<form id=""  method="post" name="user-register" action="{{route('User.Account')}}">
+						<form id="password_reset"  method="post" name="password_reset" action="{{route('password.update')}}">
 					    	{{csrf_field()}}
-							
-							
+							<input type="password" id="current_pwd" name="current_pwd" placeholder="Current Password" > 
+							<span id="check_pwd"></span>
+							<input type="password" id="new_pwd" name="new_pwd" placeholder="New Password"> 
+							<input type="password" id="confirm_pwd" name="confirm_pwd" placeholder="Confirm Password"> 
+
 
 							<button type="submit" class="btn btn-default">Reset</button>
 						</form>

@@ -102,7 +102,10 @@ Route::prefix('User')->middleware('UserLogin')->group(function(){
 
         // user account page 
     Route::match(['get', 'post'],'User-Account','User\User_cont@account')->name('User.Account');
-
+      // check current passowrd is correct 
+   Route::post('check-password','User\User_cont@checkPassword')->name('password.check');
+      // update password
+      Route::post('update-password','User\User_cont@updatePassword')->name('password.update');
     //cart route 
     Route::prefix('Cart')->group(function(){
         Route::get('product-cart','User\Cart_cont@addToCart')->name('Product.AddToCart');
