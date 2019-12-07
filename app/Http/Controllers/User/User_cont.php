@@ -9,6 +9,8 @@ use App\User;
 use App\Model\Country;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Session;
+
 class User_cont extends Controller
 {   
 
@@ -65,6 +67,8 @@ class User_cont extends Controller
        public function logout(){
          //clear the authentication information in the user's session
         Auth::logout();
+        //clear the session 
+        Session::flush();
         return redirect()->route('UserIndex');
        }
 

@@ -371,4 +371,36 @@ $(document).ready(function(){
 });
 
 
+//copy billing address to ship 
+$(document).ready(function(){
+	
+	$('#billToShip').on('click',function(){
+		if(this.checked ){
+			// copy all bill values into ship value 
+ 		$('#s-name').val($('#b-name').val());
+ 		$('#s-address').val($('#b-address').val());
+ 		$('#s-city').val($('#b-city').val());
+ 		$('#s-state').val($('#b-state').val());
+ 		$('#s-country').val($('#b-country').val());
+ 		$('#s-pincode').val($('#b-pincode').val());
+ 		$('#s-phone').val($('#b-phone').val());
+
+		}else{
+			// remove all values if unchecked
+ 		$('#s-name').val('');
+ 		$('#s-address').val( '');
+ 		$('#s-city').val('');
+ 		$('#s-state').val('');
+ 		$('#s-country').val('');
+ 		$('#s-pincode').val('');
+ 		$('#s-phone').val('');
+	
+		}
+	});
+	
+	
+	
+});
+
+
 

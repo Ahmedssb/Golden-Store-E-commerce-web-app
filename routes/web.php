@@ -117,6 +117,19 @@ Route::prefix('User')->middleware('UserLogin')->group(function(){
 
         Route::get('cart-Update/{id}/{quantity}','User\Cart_cont@UpdateCartItem')->name('Cart.Update');
 
+        //checkout routes 
+        Route::prefix('Checkout')->group(function(){
+
+          Route::match(['get', 'post'],'CheckoutPage','User\Checkout_cont@checkout')->name('Checkout');
+          Route::post('product-cart','User\Cart_cont@addToCart')->name('Product.AddToCart');
+
+           
+        }); // end of checkout route 
+       
+        // orser review routes
+        Route::match(['get', 'post'],'OrderReview','User\Checkout_cont@orderReview')->name('Order.Review');
+
+
       }); // end of cart route 
  });
 
