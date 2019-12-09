@@ -6,15 +6,28 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use  App\Model\Cart;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 use Illuminate\Support\Facades\Session;
 use App\Model\Product;
 use App\Model\ProductAttributes;
  class Cart_cont extends Controller
 {
     public function index(){
-        $session_id = Session::get('session_id');
-        // get the cart items
-        $cart_items = Cart::where(['session_id'=>$session_id])->get();
+       // $session_id = Session::get('session_id');
+       // get the current user 
+         $user = Auth::user();
+
+         //check if  user logged in or not 
+         if(Auth::check()){
+        // get the cart items using user email
+        $cart_items = Cart::where(['user_email'=>$user->email])->get();
+         }else{
+              // get the cart items using the current session
+              $session_id = Session::get('session_id');
+              $cart_items = Cart::where(['session_id'=>$session_id])->get();
+         }
+       
           // get the image for every item and assign it to the array with image as key
          foreach($cart_items as $key=>$product){
            $productDetails = Product::find($product->product_id);

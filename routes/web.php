@@ -98,6 +98,21 @@ Route::get('User-Logout','User\User_cont@logout')->name('User.Logout');
 
 
 
+//cart routes 
+    
+Route::get('product-cart','User\Cart_cont@addToCart')->name('Product.AddToCart');
+Route::post('product-cart','User\Cart_cont@addToCart')->name('Product.AddToCart');
+
+Route::get('cart-Index','User\Cart_cont@index')->name('Cart.Index');
+
+Route::get('cart-Delete/{id}','User\Cart_cont@deleteCartItem')->name('Cart.Delete');
+
+Route::get('cart-Update/{id}/{quantity}','User\Cart_cont@UpdateCartItem')->name('Cart.Update');
+
+
+
+
+
 Route::prefix('User')->middleware('UserLogin')->group(function(){
 
         // user account page 
@@ -105,33 +120,28 @@ Route::prefix('User')->middleware('UserLogin')->group(function(){
       // check current passowrd is correct 
    Route::post('check-password','User\User_cont@checkPassword')->name('password.check');
       // update password
-      Route::post('update-password','User\User_cont@updatePassword')->name('password.update');
-    //cart route 
-    Route::prefix('Cart')->group(function(){
-        Route::get('product-cart','User\Cart_cont@addToCart')->name('Product.AddToCart');
-        Route::post('product-cart','User\Cart_cont@addToCart')->name('Product.AddToCart');
+   Route::post('update-password','User\User_cont@updatePassword')->name('password.update');
 
-        Route::get('cart-Index','User\Cart_cont@index')->name('Cart.Index');
+    
 
-        Route::get('cart-Delete/{id}','User\Cart_cont@deleteCartItem')->name('Cart.Delete');
-
-        Route::get('cart-Update/{id}/{quantity}','User\Cart_cont@UpdateCartItem')->name('Cart.Update');
-
+        
         //checkout routes 
         Route::prefix('Checkout')->group(function(){
 
           Route::match(['get', 'post'],'CheckoutPage','User\Checkout_cont@checkout')->name('Checkout');
-          Route::post('product-cart','User\Cart_cont@addToCart')->name('Product.AddToCart');
-
+          
+             // order review routes
+          Route::match(['get', 'post'],'OrderReview','User\Checkout_cont@orderReview')->name('Order.Review');
+        
+              // place order   routes
+           Route::match(['get', 'post'],'PlaceOrder','User\Checkout_cont@placeOrder')->name('Place.Order');
            
         }); // end of checkout route 
        
-        // orser review routes
-        Route::match(['get', 'post'],'OrderReview','User\Checkout_cont@orderReview')->name('Order.Review');
+     
 
 
-      }); // end of cart route 
- });
+  });
 
 
 

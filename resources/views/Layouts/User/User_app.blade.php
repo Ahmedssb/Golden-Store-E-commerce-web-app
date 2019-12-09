@@ -8,7 +8,8 @@
     <meta name="author" content="">
     <title>Home | E-Shopper</title>
     <script src="/User/js/jquery.js"></script>
-     
+      <!-- SweetAlert2 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
      <style>
   /* Style the buttons that are used to open and close the accordion panel */
 .accordion10 {

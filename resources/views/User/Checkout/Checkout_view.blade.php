@@ -71,7 +71,7 @@
 					<div class="signup-form"><!--Shipping-->
 						<h2>Ship To</h2>
 							<div class="form-group"> 
-							   <input type="text"  value="" id="s-name" name="s-name" class="form-control" placeholder="Shipping Name" />
+							   <input type="text"  value="{{$shipping_details['name']}}" id="s-name" name="s-name" class="form-control" placeholder="Shipping Name" />
 							 </div>
 							 
 							 <div class="form-group">
@@ -103,7 +103,7 @@
 								<input type="text" id="s-phone" value="{{$shipping_details['phone']}}"  name="s-phone" class="form-control" placeholder="Shipping Phone" />
 							 </div>
 							 
-							 <button type="submit" class="btn btn-default">Checkout</button>
+							 <button type="submit" style="float:right;" class="btn btn-default check_out">Checkout</button>
 					</div><!--/Shipping-->
 				</div>
 		    	</form>

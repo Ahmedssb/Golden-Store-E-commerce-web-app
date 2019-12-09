@@ -10,8 +10,10 @@ use App\Model\Country;
 use App\Model\DeliveryAddresses;
 use Illuminate\Support\Facades\Session;
 use  App\Model\Cart;
+use  App\Model\orders;
 use App\Model\Product;
-
+use App\Model\OrdersProducts;
+use Illuminate\Support\Facades\DB;
 
 class Checkout_cont extends Controller
 {
@@ -70,6 +72,7 @@ class Checkout_cont extends Controller
              $new_delivery_add = new   DeliveryAddresses();
              $new_delivery_add->user_id = $user->id;
              $new_delivery_add->user_email = $user->email;
+             $new_delivery_add->name = $data['s-name'];
              $new_delivery_add->address = $data['s-address'];
              $new_delivery_add->city = $data['s-city'];
              $new_delivery_add->state = $data['s-state'];
@@ -111,4 +114,62 @@ class Checkout_cont extends Controller
  
     return view('User.Checkout.OrderReview_view',$arr);
   }
+
+
+ public function placeOrder(Request $request){
+   $data = $request->all();
+   $user =Auth::user();
+
+   //get the shipping address details from delivery address table 
+   $shipping_details = DeliveryAddresses::where('user_email',$user->email)->first();
+
+   // create new order 
+
+   $order = new orders();
+
+   $order->user_id = $user->id;
+   $order->user_email = $user->email;
+   $order->name =  $shipping_details->name;
+   $order->city = $shipping_details->city;
+   $order->state = $shipping_details->state;
+   $order->country = $shipping_details->country;
+   $order->picode = $shipping_details->pincode;
+   $order->phone = $shipping_details->phone;
+   $order->address = $shipping_details->address;
+   $order->shiping_charges ='none';
+   $order->coupon_code = 'none';
+   $order->coupon_amoutn = 0.00;
+   $order->order_Status = 'new';
+   $order->payment_method = $data['payment_method'];
+   $order->grand_total = $data['grand_total'];
+
+    $order->save();
+    // get the last inserted id 
+    $order_id = DB::getPdo()->lastInsertId();
+
+     // get products from the cart 
+     $cart_products = Cart::where(['user_email'=>$user->email])->get();
+     
+     
+      //create order products & assign order id & user id fore every order product
+      foreach($cart_products as $product){
+         //create new order-product
+         $order_product = new OrdersProducts();
+
+         $order_product->order_id = $order_id;
+         $order_product->user_id = $user->id;
+         $order_product->product_id =  $product->product_id;
+         $order_product->product_code = $product->product_code;
+         $order_product->product_name = $product->product_name;
+         $order_product->product_size = $product->size;
+         $order_product->product_color = $product->product_color;
+         $order_product->price = $product->price;
+         $order_product->qty = $product->quantity;
+         
+         $order_product->save();
+      }
+
+     return view('User.Checkout.PlaceOrder_view');
+ }
+
 }

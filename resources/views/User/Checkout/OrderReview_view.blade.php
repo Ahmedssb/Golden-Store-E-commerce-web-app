@@ -162,7 +162,7 @@
 									</tr>
 									<tr>
 										<td>Total</td>
-										<td><span>${{$total}}</span></td>
+										<td><span>${{$grand_total =$total}}</span></td>
 									</tr>
 								</table>
 							</td>
@@ -171,17 +171,24 @@
 					 
 					</tbody>
 				</table>
-			</div>
+            </div>
+            <form name="paymentForm" id="paymentForm" method="post" action="{{route('Place.Order')}}">
+                {{csrf_field()}}
+           
 			<div class="payment-options">
+                   <input type="hidden" value="{{$grand_total}}" name="grand_total">
 					<span>
-						<label><input type="checkbox"> Direct Bank Transfer</label>
+						<label> <strong> Select Payment Method  :</strong></label>
 					</span>
 					<span>
-						<label><input type="checkbox"> Check Payment</label>
+						<label><input type="radio" name="payment_method" id="cod" value="cod"> Cach On Dekivery</label>
 					</span>
 					<span>
-						<label><input type="checkbox"> Paypal</label>
-					</span>
+						<label><input type="radio"  name="payment_method" id="paypal" value="paypal"> Paypal</label>
+                    </span>
+                    <button style="float:right;" type="submit" onclick="selectPaymentMehtod()" class="btn btn-default check_out">Place Order</button>
+
 				</div>
+				</form>
   </section>
     @endsection
