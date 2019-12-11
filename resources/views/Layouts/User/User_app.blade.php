@@ -10,7 +10,10 @@
     <script src="/User/js/jquery.js"></script>
       <!-- SweetAlert2 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
-     <style>
+    
+
+    <style>
+
   /* Style the buttons that are used to open and close the accordion panel */
 .accordion10 {
   background-color: #FFF;
@@ -61,8 +64,10 @@
 	<link href="/User/css/responsive.css" rel="stylesheet">
   <link rel="stylesheet" href="/User/css/easyzoom.css" />
   <link rel="stylesheet" href="/User/css/passtrength.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
   
+
 
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -102,7 +107,17 @@
   <script src="/User/js/main.js"></script>
   <script src="/User/js/jquery.validate.js"></script>
   <script src="/User/js/passtrength.js"></script>
+  <!-- data table js -->
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+ 
+   <sript>
+      $(document).ready( function () {
+        $('#order_table').DataTable();
+      } );
 
+
+   </sript>
 
 </body>
 </html>

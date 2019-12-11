@@ -21,4 +21,10 @@ class OrdersProducts extends Model
         'qty',
       
     ];
+
+
+    public function order(){
+        return $this->belongsTo('App\Model\Orders','order_id');
+
+    }
 }

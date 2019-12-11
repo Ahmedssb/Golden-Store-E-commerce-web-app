@@ -26,4 +26,9 @@ class Orders extends Model
         'grand_total',
 
     ];
+
+
+    public function ordersProducts(){
+        return $this->hasMany('App\Model\OrdersProducts','order_id');
+    }
 }

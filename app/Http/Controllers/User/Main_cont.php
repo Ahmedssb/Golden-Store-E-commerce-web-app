@@ -31,6 +31,8 @@ class Main_cont extends Controller
        $sub_cat = Category::where('parent_id', '!=', 0)->get();
       
        $arr['products']=   $Products;
+
+    
        $arr['categories']= $categories;
        $arr['sub_cat'] = $sub_cat;
        

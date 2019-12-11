@@ -405,6 +405,7 @@ function selectPaymentMehtod(){
  		if($('#paypal').is(':checked')|| $('#cod').is(':checked')){
  		}else{
 	           swal("Payment Method!!", "Select one of the payment method")
+			  return false;
 
 		}
 	}

@@ -18,7 +18,7 @@
                    <li  class="active">Order Review</li>
 				</ol>
 			</div>
-			<div class="row"    >
+			<div class="row"  >
 		     
 				<div class="col-sm-4 col-sm-offset-1" style="margin-top='0px !important;'">
 					<div class="login-form" ><!--Billing-->

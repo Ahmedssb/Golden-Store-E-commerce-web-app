@@ -11,6 +11,7 @@ use App\User;
 use Illuminate\Support\Facades\Session;
 use App\Model\Product;
 use App\Model\ProductAttributes;
+
  class Cart_cont extends Controller
 {
     public function index(){
@@ -34,6 +35,7 @@ use App\Model\ProductAttributes;
            $cart_items[$key]->image =$productDetails->image;  
         }
          //echo "<pre>"; print_r($cart_items);
+          
          $arr['cart_items'] = $cart_items;
          return view('User.Cart.Cart_view',$arr);
     }
@@ -54,10 +56,11 @@ use App\Model\ProductAttributes;
             $size= explode('-',$data['size']);
             $cart->size = $size['1'];
           }
-          if(empty($data['user_email'])){
+          // if user is logged in then assign email to the cart else assign empty 
+          if(empty(Auth::user()->email)){
             $cart->user_email = "";
           }else{
-            $cart->user_email = $data['user_email'];
+            $cart->user_email = Auth::user()->email;
           }
           // if session already set 
           $session_id = Session::get('session_id');

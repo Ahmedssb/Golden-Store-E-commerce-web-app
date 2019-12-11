@@ -64,7 +64,8 @@ Route::prefix('Admin')->middleware('auth')->group(function(){
          
      }); // end of product route 
 
-}); //end of admin route 
+}); 
+//end of admin route 
  
 Route::get('/logout','Admin\Main\Main_cont@logout')->name('logoutt');
 
@@ -115,7 +116,7 @@ Route::get('cart-Update/{id}/{quantity}','User\Cart_cont@UpdateCartItem')->name(
 
 Route::prefix('User')->middleware('UserLogin')->group(function(){
 
-        // user account page 
+  // user account page 
     Route::match(['get', 'post'],'User-Account','User\User_cont@account')->name('User.Account');
       // check current passowrd is correct 
    Route::post('check-password','User\User_cont@checkPassword')->name('password.check');
@@ -135,10 +136,22 @@ Route::prefix('User')->middleware('UserLogin')->group(function(){
         
               // place order   routes
            Route::match(['get', 'post'],'PlaceOrder','User\Checkout_cont@placeOrder')->name('Place.Order');
+             // thanks page route after user plce the order 
+           Route::get('Thanks','User\Checkout_cont@thanks')->name('Thanks');
+          
+
+
            
         }); // end of checkout route 
-       
-     
+         
+        //orders 
+        Route::prefix('Orders')->group(function(){
+          // all user orders 
+          Route::get('Orders','User\Order_cont@userOrders')->name('Orders');
+          // all order Details 
+          Route::get('OrdersDetails/{order_id}','User\Order_cont@userOrdersDetails')->name('Orders.Details');
+
+        });
 
 
   });

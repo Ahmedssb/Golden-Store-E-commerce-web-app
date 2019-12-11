@@ -165,11 +165,26 @@ class Checkout_cont extends Controller
          $order_product->product_color = $product->product_color;
          $order_product->price = $product->price;
          $order_product->qty = $product->quantity;
-         
+
          $order_product->save();
       }
+       
+       Session::put('order_id',$order_id);
+       Session::put('grand_total', $data['grand_total']);
+      // return view('User.Checkout.PlaceOrder_view');
 
-     return view('User.Checkout.PlaceOrder_view');
+      return redirect()->route('Thanks');
  }
+
+
+ public function thanks(Request $request){
+    //delete the cart items  from cart table after user place his/her order on the orders and ordersproducts table  
+    $user =Auth::user();
+    $cart_items = Cart::where(['user_email'=>$user->email])->delete();
+     return view('User.Checkout.Thanks_view');
+
+ }
+
+
 
 }

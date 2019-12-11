@@ -12,11 +12,11 @@
  
    <section id="form"><!--form-->
 		<div class="container" >
-		<div class="breadcrumbs">
-				<ol class="breadcrumb">
-				  <li><a href="#">Home</a></li>
-				  <li  class="active" >Check out</li>
-				</ol>
+			<div class="breadcrumbs">
+					<ol class="breadcrumb">
+					<li><a href="#">Home</a></li>
+					<li  class="active" >Check out</li>
+					</ol>
 			</div>
 			<div class="row" >
 		    	<form  id="checkoutForm"  method="post" name="checkoutForm" action="{{route('Checkout')}}">
