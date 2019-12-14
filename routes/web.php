@@ -63,9 +63,22 @@ Route::prefix('Admin')->middleware('auth')->group(function(){
           }); // end of product attributes route 
          
      }); // end of product route 
+   // Admin Orders route 
+   Route::get('/AdminOrders','Admin\Order\order_cont@viewOrders')->name('Admin.Orders');
+    // Admin Order products 
+    Route::get('/AdminOrderProducts/{id}','Admin\Order\order_cont@ordersDetails')->name('Admin.Order.Products');
+    //update order satus route
+    Route::post('/AdminOrderUpdate','Admin\Order\order_cont@orderUpdateStatus')->name('Admin.Order.Update');
+
 
 }); 
-//end of admin route 
+      //-------------------end of admin route  -----------------------
+
+
+
+   /* 
+   ******* ************* User Routes *************************** 
+    */
  
 Route::get('/logout','Admin\Main\Main_cont@logout')->name('logoutt');
 

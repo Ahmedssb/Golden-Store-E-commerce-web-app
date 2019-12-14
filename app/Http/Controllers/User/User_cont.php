@@ -67,7 +67,7 @@ class User_cont extends Controller
        public function logout(){
          //clear the authentication information in the user's session
         Auth::logout();
-        //clear the session 
+        //clear the session remove all data from the session
         Session::flush();
         return redirect()->route('UserIndex');
        }
