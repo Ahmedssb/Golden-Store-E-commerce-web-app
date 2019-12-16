@@ -6,11 +6,15 @@
                                                     <div class="card">
                                                         <div class="card-header">Update Password</div>
                                                         <div class="card-body card-block">
-                                                            <form action="" method=" " class="" name="password_validate" id="password_validate" novalidate="novalidate">
+                                                            <form action="{{route('Settings')}}" method="post" class="" name="password_update" id="password_update"  >
+                                                            {{csrf_field()}}
+
                                                                 <div class="form-group">
                                                                     <div class="input-group">
                                                                         <div class="input-group-addon">Current Password</div>
                                                                         <input type="password" id="current_pwd" name="current_pwd" class="form-control">
+                                                                        <span id="check_pwd"></span>
+
                                                                      </div>
                                                                 </div>
                                                                 <div class="form-group">

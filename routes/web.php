@@ -19,12 +19,14 @@ Route::get('/AdminLog','Admin\Main\Main_cont@login')->name('AdminLog');
 Route::post('/AdminLog','Admin\Main\Main_cont@login')->name('AdminLog');
 
 // start Admin route 
-Route::prefix('Admin')->middleware('auth')->group(function(){ 
+Route::prefix('Admin')->middleware('AdminLogin')->group(function(){ 
 
     Route::get('/AdminDash','Admin\Main\Main_cont@index')->name('AdminDashboard');
     Route::get('/logout','Admin\Main\Main_cont@logout')->name('logoutt');
     Route::get('/Settings','Admin\Main\Main_cont@settings')->name('Settings');
-     
+    Route::post('/Settings','Admin\Main\Main_cont@settings')->name('Settings');
+    Route::post('/check-password','Admin\Main\Main_cont@checkPassword')->name('checkPassword');
+
     //category route 
     Route::prefix('Category')->group(function(){
 

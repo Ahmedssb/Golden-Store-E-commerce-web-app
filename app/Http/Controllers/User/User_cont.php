@@ -19,6 +19,7 @@ class User_cont extends Controller
       $data = $request->all();
       if (Auth::attempt(['email' =>$data['email'], 'password' => $data['password']])) {
         return redirect()->route('Cart.Index');
+        Session::put('userSession',$data['email']);
       }else{
        return redirect()->back()->with('msg_err','Email or Password is incorrect');
      }
@@ -67,8 +68,10 @@ class User_cont extends Controller
        public function logout(){
          //clear the authentication information in the user's session
         Auth::logout();
-        //clear the session remove all data from the session
-        Session::flush();
+        //clear the user session
+        Session::forget('userSession');
+        //clear the cart session
+        Session::forget('cartSession');
         return redirect()->route('UserIndex');
        }
 

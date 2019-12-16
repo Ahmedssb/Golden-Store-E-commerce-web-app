@@ -63,12 +63,12 @@ use App\Model\ProductAttributes;
             $cart->user_email = Auth::user()->email;
           }
           // if session already set 
-          $session_id = Session::get('session_id');
+          $session_id = Session::get('cartSession');
           // if session not set
            if(empty($session_id)){
              // generate a random string of 40 chars
             $session_id = Str::random(40);
-            Session::put('session_id',$session_id);
+            Session::put('cartSession',$session_id);
            }
             $cart->session_id =  $session_id ;
 
