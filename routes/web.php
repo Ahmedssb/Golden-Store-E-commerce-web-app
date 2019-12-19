@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return redirect(route('UserIndex'));
 });
 
 Route::get('/AdminLog','Admin\Main\Main_cont@login')->name('AdminLog');
@@ -26,6 +26,7 @@ Route::prefix('Admin')->middleware('AdminLogin')->group(function(){
     Route::get('/Settings','Admin\Main\Main_cont@settings')->name('Settings');
     Route::post('/Settings','Admin\Main\Main_cont@settings')->name('Settings');
     Route::post('/check-password','Admin\Main\Main_cont@checkPassword')->name('checkPassword');
+    Route::get('/Users','Admin\User\User_cont@getRegisteredUsers')->name('Admin.Users');
 
     //category route 
     Route::prefix('Category')->group(function(){
@@ -84,10 +85,8 @@ Route::prefix('Admin')->middleware('AdminLogin')->group(function(){
  
 Route::get('/logout','Admin\Main\Main_cont@logout')->name('logoutt');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
+ 
+ 
 
 Route::get('/UserIndex','User\Main_cont@index')->name('UserIndex');
 
@@ -100,6 +99,8 @@ Route::get('ProductDeatils/{id}','User\Product_cont@productDetails')->name('Cate
 // get product price 
 Route::get('product-price','User\Product_cont@getPrice');
 
+// product search
+Route::post('product-search','User\Main_cont@productSearch')->name('Product.Search');
 
 // user login form
 Route::post('User-Login','User\User_cont@login')->name('User.Login');
@@ -124,8 +125,6 @@ Route::get('cart-Index','User\Cart_cont@index')->name('Cart.Index');
 Route::get('cart-Delete/{id}','User\Cart_cont@deleteCartItem')->name('Cart.Delete');
 
 Route::get('cart-Update/{id}/{quantity}','User\Cart_cont@UpdateCartItem')->name('Cart.Update');
-
-
 
 
 

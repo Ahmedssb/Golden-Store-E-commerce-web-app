@@ -42,11 +42,10 @@
                                             @endif
                                             </td>
                                             <td> 
-                                            <button class="btn btn-success btn-sm" id="{{$product->id}}" onclick="showPop('{{$product->id}}','{{$product->id*300}}','{{$product->id*700}}')"  class="popbtn"><a  >View more</a></button>
-                                            <a class="btn btn-success btn-sm" href="{{route('ProductAttributes.Add',['id'=>$product->id])}} ">Add Attributes</a>
-                                            <a class="btn btn-info btn-sm " href="{{route('Product.AddImages',['id'=>$product->id])}} ">Add Images</a>
-                                            <a class="btn btn-warning btn-sm" href="{{route('Product.Update',['id'=>$product->id])}} ">Edit</a>
-                                            <a class="btn btn-danger btn-sm" href="{{route('Product.Delete',['id'=>$product->id])}} " id="delete_cat">Delete</a>
+                                             <a class="btn btn-primary	 btn-sm" style="margin-bottom:5px;margin-right:5px;" href="{{route('ProductAttributes.Add',['id'=>$product->id])}} ">Add Attributes</a>
+                                            <a class="btn btn-info btn-sm " style="margin-bottom:5px;"  href="{{route('Product.AddImages',['id'=>$product->id])}} ">Add Images</a>
+                                            <a class="btn btn-warning btn-sm" style="margin-right:5px;" href="{{route('Product.Update',['id'=>$product->id])}} ">Edit</a>
+                                            <a class="bbtn-dangerr btn-sm" href="{{route('Product.Delete',['id'=>$product->id])}} " id="delete_cat">Delete</a>
                                            
                                             </td>
                                         </tr>

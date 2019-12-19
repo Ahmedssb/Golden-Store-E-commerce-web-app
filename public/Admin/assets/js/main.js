@@ -11,20 +11,20 @@ jQuery(document).ready(function($) {
 	jQuery('.selectpicker').selectpicker;
 
 
-	$('#menuToggle').on('click', function(event) {
-		$('body').toggleClass('open');
+	jQuery('#menuToggle').on('click', function(event) {
+		jQuery('body').toggleClass('open');
 	});
 
-	$('.search-trigger').on('click', function(event) {
+	jQuery('.search-trigger').on('click', function(event) {
 		event.preventDefault();
 		event.stopPropagation();
-		$('.search-trigger').parent('.header-left').addClass('open');
+		jQuery('.search-trigger').parent('.header-left').addClass('open');
 	});
 
-	$('.search-close').on('click', function(event) {
+	jQuery('.search-close').on('click', function(event) {
 		event.preventDefault();
 		event.stopPropagation();
-		$('.search-trigger').parent('.header-left').removeClass('open');
+		jQuery('.search-trigger').parent('.header-left').removeClass('open');
 	});
 
 	// $('.user-area> a').on('click', function(event) {

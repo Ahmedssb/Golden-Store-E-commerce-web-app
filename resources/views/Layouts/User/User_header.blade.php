@@ -4,80 +4,39 @@
 
   ?>
  <header id="header"><!--header-->
-		<div class="header_top"><!--header_top-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="contactinfo">
-							<ul class="nav nav-pills">
-								<li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="social-icons pull-right">
-							<ul class="nav navbar-nav">
-							
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header_top-->
+		
 		
 		<div class="header-middle"><!--header-middle-->
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+							<a href="{{route('UserIndex')}}"><img src="/Admin/images/logo1.png" style="width:100px;height:50px;"alt="" /></a>
 						</div>
-						<div class="btn-group pull-right">
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									USA
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canada</a></li>
-									<li><a href="#">UK</a></li>
-								</ul>
-							</div>
-							
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									DOLLAR
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canadian Dollar</a></li>
-									<li><a href="#">Pound</a></li>
-								</ul>
-							</div>
-						</div>
+					 
 					</div>
+				
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="{{route('Cart.Index')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
- 								<li><a href="{{route('Orders')}}"><i class="fa fa-crosshairs"></i> Orders</a></li>
+ 								<li><a href="{{route('Cart.Index')}}"><i class="fa fa-shopping-cart" style="color:#FE980F;"></i> Cart</a></li>
+								 <li><a href="{{route('Orders')}}"><i class="fa fa-crosshairs" style="color:#FE980F;"></i> Orders</a></li>
+								 
 								@if(empty(Auth::check()))
-									<li><a href="{{route('User.Login')}}"><i class="fa fa-lock"></i> Login</a></li>
+									<li><a href="{{route('User.Login')}}"><i class="fa fa-lock" style="color:#FE980F;"></i> Login</a></li>
 								@else
-								<li><a href="{{route('User.Account')}}"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="{{route('User.Logout')}}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+								<li><a href="{{route('User.Account')}}"><i class="fa fa-user" style="color:#FE980F;"></i> Account</a></li>
+								<li><a href="{{route('User.Logout')}}"><i class="fa fa-sign-out" aria-hidden="true" style="color:#FE980F;"></i>Logout</a></li>
 								@endif
+								<li><a href="{{route('AdminLog')}}"><i class="fa fa-lock" style="color:#FE980F;"></i> Admin Login</a></li>
 
 							</ul>
 						</div>
+						
+						
 					</div>
+					
+					
 				</div>
 			</div>
 		</div><!--/header-middle-->
@@ -96,7 +55,7 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.html" class="active">Home</a></li>
+								<li><a href="{{route('UserIndex')}}" class="active">Home</a></li>
 								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
 									     @foreach($main_cat as $cat)
@@ -108,12 +67,20 @@
  								<li><a href="contact-us.html">Contact</a></li>
 							</ul>
 						</div>
+						
+						
 					</div>
+					
 					<div class="col-sm-3">
+					  <form action="{{route('Product.Search')}}" method="post">
+					  {{csrf_field()}}
 						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
+							<input type="text" placeholder="Search" name="query">
+							<button type="submit" style="border:0px;height:33px;margin-left:-33px;"> Go</button>
 						</div>
+					  </form>
 					</div>
+					
 				</div>
 			</div>
 		</div><!--/header-bottom-->

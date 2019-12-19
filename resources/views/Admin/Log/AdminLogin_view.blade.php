@@ -53,7 +53,7 @@
                     <form method="post" action="{{route('AdminLog')}}">
                     {{csrf_field()}}
                         <div class="form-group">
-                            <label>Email address</label>
+                            <label>User Name</label>
                             <input type="text" class="form-control" placeholder="UserName" name="username">
                         </div>
                             <div class="form-group">
@@ -61,12 +61,7 @@
                                 <input type="password" class="form-control" placeholder="Password" name="password">
                         </div>
                                 <div class="checkbox">
-                                    <label>
-                                <input type="checkbox"> Remember Me
-                            </label>
-                                    <label class="pull-right">
-                                <a href="#">Forgotten Password?</a>
-                            </label>
+                                
 
                                 </div>
                                 <input type="submit" value="login" class="btn btn-success btn-flat m-b-30 m-t-30"> 
@@ -81,9 +76,7 @@
                                    @endif
                                     </div>
                                 </div>
-                                <div class="register-link m-t-15 text-center">
-                                    <p>Don't have account ? <a href="#"> Sign Up Here</a></p>
-                                </div>
+                              
                     </form>
                 </div>
             </div>

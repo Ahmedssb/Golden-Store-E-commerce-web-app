@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use App\Model\Admin;
- 
+use App\User;
+use App\Category;
+use App\Model\Product;
+use App\Model\Orders;
 class Main_cont extends Controller
 {
     public function login(Request $request){
@@ -44,14 +47,27 @@ class Main_cont extends Controller
       return redirect(route('AdminLog'))->with('success_msg','you successfully logged out');
     }
 
+     
     public function index(){
+          // get some information about the system 
 
-       /* if(Session::has('adminSession')){
-            //perform all dashboard task
-        }else{
-            return redirect(route('AdminLog'))->with('error_message','You must login') ;
-        }*/
-        return view('Admin.Dashboard.Index_view');   
+          // get num of users on the system
+          $users_count = User::all()->count();
+          // get num of categories on the system
+          $cats_count = Category::all()->count();
+          // get num of products on the system
+          $pro_count = Product::all()->count();
+           // get num of orders on the system
+           $orders_count = Orders::all()->count();
+         
+
+          $arr['users_count'] = $users_count;
+          $arr['cats_count'] = $cats_count;
+          $arr['pro_count'] = $pro_count;
+          $arr['orders_count'] = $orders_count;
+
+         
+        return view('Admin.Dashboard.Index_view',$arr);   
 
     }
 

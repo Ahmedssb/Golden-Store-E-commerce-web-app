@@ -10,7 +10,7 @@
 			</div>
 	@endif
  
-    <section id="form"><!--form-->
+    <section id="cart_items"><!--form-->
 		<div class="container" >
 				<div class="breadcrumbs">
 						<ol class="breadcrumb">

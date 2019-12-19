@@ -40,8 +40,7 @@ class Product_cont extends Controller
          $products = $category->products;
         
        }
-
-      
+       $products = $products->paginate(9);      
        /* get all categories and sub to dispaly on the left panel 
      this code could be moved as leftside panel  layout view and extend it for mny views*/
        $categories = Category::where('parent_id',0)->where('status',1) ->get();

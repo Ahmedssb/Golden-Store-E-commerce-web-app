@@ -62,8 +62,7 @@
 										<p>Web ID: {{$productDeatails->code}}</p>
 										<p>
 										   <select  id="selSize" name="size">   
-											  <option value="">select</option>
-											  @foreach($attributes as $att)
+ 											  @foreach($attributes as $att)
 											  <option value="{{$att->id}}-{{$att->size}}">{{$att->size}}</option>
 											  @endforeach
 										   </select>
@@ -82,8 +81,7 @@
 										</span>
 										<p><b>Availability:</b> <span id="availability">@if($total_stock>0) In Stock @else Out Of Stock @endif</span></p>
 										<p><b>Condition:</b> New</p>
-										<a href=""><img src="/User/images/product-details/share.png" class="share img-responsive"  alt="" /></a>
-									</div><!--/product-information-->
+ 									</div><!--/product-information-->
 							</form>
 						</div>
 					</div><!--/product-details-->

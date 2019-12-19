@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use  App\Model\orders;
 use App\Model\OrdersProducts;
-use App\Model\productImages;
+use App\Model\product ;
 class Order_cont extends Controller
 {
     public function userOrders(){
@@ -34,7 +34,7 @@ class Order_cont extends Controller
         
     // get the image for every item and assign it to the array with image as key
            foreach($orders_details as $key=>$detail){
-            $product_image = productImages::where(['product_id'=>$detail->product_id])->first();
+            $product_image = Product::where(['id'=>$detail->product_id])->first();
            //echo  $product_image;
             $orders_details[$key]->image = $product_image->image;  
           }

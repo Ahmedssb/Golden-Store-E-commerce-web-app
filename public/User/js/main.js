@@ -73,8 +73,8 @@ $(document).ready(function(){
 				 
 				  if(arr[1]== 0){
 					  $("#cart_btn").hide();
-					  $("#availability").text("Out of Stock");
-				  }else{
+					  $("#availability").html("Out of Stock").css("color", "red");
+ 				  }else{
 					  $("#cart_btn").show();
 					  $("#availability").text("In Stock");
 					  $("#p-price").val(arr[0]);

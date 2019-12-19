@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
+    <title>Gold Store </title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -103,13 +103,7 @@
     <script src="/Admin/assets/js/main.js"></script>
 
 
-    <script src="/Admin/vendors/chart.js/dist/Chart.bundle.min.js"></script>
-    <script src="/Admin/assets/js/dashboard.js"></script>
-    <script src="/Admin/assets/js/widgets.js"></script>
-    <script src="/Admin/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
-    <script src="/Admin/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-    <script src="/Admin/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    
+     
    
      
 
@@ -130,34 +124,14 @@
     <script src="/Admin/vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
     <script src="/Admin/assets/js/init-scripts/data-table/datatables-init.js"></script>
   
-    <!-- validation js -->
-   
+    
 
-
-    <script>
-        (function($) {
-            "use strict";
-
-            jQuery('#vmap').vectorMap({
-                map: 'world_en',
-                backgroundColor: null,
-                color: '#ffffff',
-                hoverOpacity: 0.7,
-                selectedColor: '#1de9b6',
-                enableZoom: true,
-                showTooltip: true,
-                values: sample_data,
-                scaleColors: ['#1de9b6', '#03a9f5'],
-                normalizeFunction: 'polynomial'
-            });
-        })(jQuery);
-    </script>
+ 
 
     <script>
     
     $(document).ready(function(){
-        alert("test"); 
-    $("#delete_cat").click(functin(){
+     $("#delete_cat").click(functin(){
                       
          if(confirm("Are  you sure you want to delete this category?")){
            return true;
@@ -169,25 +143,7 @@
           });
     </script>
 
-<script>
-    
-    function showPop(btnId,divId,closeId){
-        var id1 = btnId,
-            id2 = divId ,
-            id3 = closeId;
-        
-       document.getElementById(id1).onclick = function (id){
-        	document.getElementById(id2).style.display = "flex";
-           
-    }
-    
-document.getElementById(id3).onclick = function(){
-    console.log(id3);
-        document.getElementById(id2).style.display = "none";
-}
-}
-    
-</script>
+ 
 
 <!--add dynamic input fields -->
 <script>
