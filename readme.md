@@ -7,6 +7,7 @@
 
  
 ## Key Features:-
+The project has user part and admin part.
 
  # Public User:
    * Search Product
@@ -32,6 +33,14 @@
   * View orders 
   *Update Order Status
   * View all registerd users.
+  
+   # Screen Shots
+   ![User Home Page](/public/images/products/product_details.PNG)    
+   ![User Home Page](/public/images/products/cart.PNG) 
+   ![User Home Page](/public/images/products/product_details.PNG) 
+   ![User Home Page](/public/images/products/orderreview.PNG)
+   ![User Home Page](/public/images/products/admincategories.PNG) 
+
 
 ## Conclusion
    Feel free to use this project or report an Issue.
