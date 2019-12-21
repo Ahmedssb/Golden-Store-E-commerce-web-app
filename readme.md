@@ -36,7 +36,7 @@
    
    
 
-![User Home Page](/public/images/products/user_homepage.PNG | width=100)
+![User Home Page](/public/images/products/user_homepage.PNG | width=50%)
 
 ![User Home Page](/public/images/products/user_homepage.PNG)
 
