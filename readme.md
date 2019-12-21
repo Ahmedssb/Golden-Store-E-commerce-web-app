@@ -2,7 +2,7 @@
  
  E-commerce website built with laravel framework.
  
- ![ ]( /images/products/user_homepage.png)
+ ![ ]( /images/user_homepage.png)
  
 ## Key Features:-
 
