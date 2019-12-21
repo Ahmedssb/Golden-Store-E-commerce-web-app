@@ -2,7 +2,7 @@
  
  E-commerce website built with laravel framework.
  
-![User Home Page](/public/images/products/user_homepage.PNG) <!-- .element height="50%" width="50%" -->
+![User Home Page](/public/images/products/user_homepage.PNG){width="50%"}
  
 ## Key Features:-
 
@@ -36,8 +36,8 @@
    
    
 
-![User Home Page](/public/images/products/user_homepage.PNG | width=50%)
+![User Home Page](/public/images/products/user_homepage.PNG){width="50%"}
 
-![User Home Page](/public/images/products/user_homepage.PNG)
+![User Home Page](/public/images/products/user_homepage.PNG){width="50%"}
 
-![User Home Page](/public/images/products/user_homepage.PNG)
+![User Home Page](/public/images/products/user_homepage.PNG){width="50%"}
