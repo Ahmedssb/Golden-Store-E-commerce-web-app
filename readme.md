@@ -36,16 +36,16 @@ The project has user part and admin part.
   
    # Screen Shots
    ![User Home Page](/public/images/products/product_details.PNG)  
-      ---
+---
    ![User Home Page](/public/images/products/cart.PNG) 
-      ---
+---
    ![User Home Page](/public/images/products/product_details.PNG)
-       ---
+---
    ![User Home Page](/public/images/products/orderreview.PNG)
-               ---
+---
 
    ![User Home Page](/public/images/products/admincategories.PNG) 
-              ---
+---
 
 
 
