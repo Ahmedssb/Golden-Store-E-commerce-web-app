@@ -2,8 +2,9 @@
  
  E-commerce website built with laravel framework.
  
- <img src="https://github.com/Ahmedssb/E-commerce/blob/master/public/images/products/user_homepage.PNG" width="50%"   >
- <img src="https://github.com/Ahmedssb/E-commerce/blob/master/public/images/products/admin_dash.PNG" width="50%"   >
+![User Home Page](/public/images/products/user_homepage.PNG) 
+![User Home Page](/public/images/products/admin_dash.PNG) 
+
  
 ## Key Features:-
 
