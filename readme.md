@@ -3,6 +3,7 @@
  E-commerce website built with laravel framework.
  
 ![User Home Page](/public/images/products/user_homepage.PNG) 
+---
 ![User Home Page](/public/images/products/admin_dash.PNG) 
 
  
