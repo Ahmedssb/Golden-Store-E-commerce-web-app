@@ -3,10 +3,10 @@
  E-commerce website built with laravel framework.
  
 ## Key Features
-#Public User
-(i) Search Product
-(ii) View Product
-(iii) Create User Account
+ #Public User
+  * Search Product
+  * View Product
+  * Create User Account
 
 #Signin User
 * Search Product
