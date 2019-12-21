@@ -3,19 +3,19 @@
  E-commerce website built with laravel framework.
  
 ## Key Features
- #Public User
+ # Public User
    * Search Product
    * View Product
    * Create User Account
 
- #Signin User
+ # Signin User
    * Search Product
    * View Product
    * Add To Cart
    * Create Orders review
    * Orders review
  
- #Admin
+ # Admin
   * Add New Category
   * Update Category
   * Delete Category
@@ -28,5 +28,5 @@
   *Update Order Status
   * View all registerd users.
 
-##Conclusion
+## Conclusion
    Feel free to use this project or report an Issue.
