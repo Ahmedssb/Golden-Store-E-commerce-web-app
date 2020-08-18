@@ -52,7 +52,7 @@ return [
             'username' =>('DB_USERNAME', 'bded413d5bbe75'),
             'password' =>('DB_PASSWORD', '81ad57e5'),
             'unix_socket' => ('DB_SOCKET', ''),
-            'charset' => 'utf8mb4',
+            'charset' => 'utf8',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
