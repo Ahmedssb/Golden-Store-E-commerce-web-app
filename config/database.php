@@ -45,7 +45,7 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'url' =>('DATABASE_URL','mysql://bded413d5bbe75:81ad57e5@us-cdbr-iron-east-04.cleardb.net/heroku_a6e2f05be3106d4?reconnect=true'),
+            'url' =>('DATABASE_URL'),
             'host' => ('DB_HOST', 'op2hpcwcbxb1t4z9.cbetxkdyhwsb.us-east-1.rds.amazonaws.com'),
             'port' => ('DB_PORT', '3306'),
             'database' =>('DB_DATABASE', 'zg2rijro7tbxyq5b'),
